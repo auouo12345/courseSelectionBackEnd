@@ -24,136 +24,160 @@ router.post('/' , async (req , res) => {
     var sid = req.session.sid;
     var cid = req.body.cid;
 
-    console.log("getting courseInfo");
+    var courseInfo;
     //整理課程資訊
-    var courseInfo = await db.query("SELECT * FROM course WHERE cid = ?" , [cid] , (err , data) => {
+    try {
 
-        if(err) {
+        let data = await queryAsync("SELECT * FROM course WHERE cid = ?" , [cid]);
 
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
+        if(data.length === 0) {
 
-        } else if(data.length === 0) {
+            return res.json({msg: "課程不存在"});
 
-            res.json({msg: "課程不存在"});
+        } else {
+
+            courseInfo = data[0];
         }
-    });
+    } catch (err) {
 
-    console.log("getting studentInfo");
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
+
+    var studentInfo;
     //整理學生資訊
-    var studentInfo = await db.query("SELECT * FROM students WHERE sid = ?" , [sid] , (err , data) => {
+    try {
 
-        if(err) {
+        let data = await queryAsync("SELECT * FROM students WHERE sid = ?" , [sid]);
 
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
+        if(data.length === 0) {
 
-        } else if(data.length === 0) {
+            return res.json({msg: "帳號不存在"});
 
-            res.json({msg: "帳號不存在"});
+        } else {
+
+            studentInfo = data[0];
         }
-    });
+    } catch (err) {
+
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
 
     //判斷系所是否相同
     if(studentInfo.dept !== courseInfo.dept) {
 
-        res.json({msg: "系所不一"});
+        return res.json({msg: "系所不一"});
     }
 
     //判斷是否超過學分上限
     if(studentInfo.credit + courseInfo > 30) {
 
-        res.json({msg: "超過學分上限"});
+        return res.json({msg: "超過學分上限"});
     }
 
     //判斷課程是否已滿
     if(courseInfo.max_quantity < courseInfo.current_quantity) {
 
-        res.json({msg: "課程已滿"});
+        return res.json({msg: "課程已滿"});
     }
 
     //判斷課程衝堂
-    await db.query("SELECT * FROM student_timetable WHERE sid = ? AND timeid IN (SELECT timeid FROM course_timetable WHERE cid = ?)" , [sid , cid] , (err , data) => {
+    try {
 
-        if(err) {
+        let data = await queryAsync("SELECT * FROM student_timetable WHERE sid = ? AND timeid IN (SELECT timeid FROM course_timetable WHERE cid = ?)" , [sid , cid]);
 
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
+        if(data.length !== 0) {
 
-        } else if(data.length !== 0) {
-
-            res.json({msg: "課程衝堂"});
+            return res.json({msg: "課程衝堂"});
         }
-    });
+    } catch (err) {
 
-    //判斷是否加選同名課程
-    await db.query("SELECT * FROM course_selection WHERE sid = ? AND name = ?" , [sid , courseInfo.name] , (err , data) => {
-
-        if(err) {
-
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
-
-        } else if(data.length !== 0) {
-
-            res.json({msg: "不可加選與已選課程同名的課程"});
-        }
-    });
-
-    //新增course_selection
-    await db.query("INSERT INTO course_selection (sid , cid , name) VALUES (? , ? , ?)" , [sid , cid , courseInfo.name] , err => {
-
-        if(err) {
-
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
-        }
-    });
-
-    //更新course
-    await db.query("UPDATE course SET current_quantity = ? WHERE cid = ?" , [courseInfo.current_quantity + 1 , cid] , err => {
-
-        if(err) {
-
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
-        }
-    });
-
-    //更新students
-    await db.query("UPDATE students SET credit = ? WHERE sid = ?" , [studentInfo.credit + courseInfo.credit , sid] , err => {
-
-        if(err) {
-
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
-        }
-    });
-
-    //整理課表
-    var timeTable = await db.query("SELECT * FROM course_timetable WHERE cid = ?" , [cid] , err => {
-
-        if(err) {
-
-            console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
-        }
-    });
-
-    //新增課表
-    for(var i = 0 ; i < timeTable.length ; i++) {
-
-        await db.query("INSERT INTO student_timetable (sid , cid , timeid , name) VALUES (? , ? , ? , ?)" , [sid , cid , timeTable.timeid , courseInfo.name] , err => {
-
-            if(err) {
-
-                console.log(err.message);
-                res.status(500).json({msg: "伺服器內部錯誤"});
-            }
-        });
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
     }
 
-    res.json({msg: "加選成功"});
+    //判斷是否加選同名課程
+    try {
+
+        let data = await queryAsync("SELECT * FROM course_selection WHERE sid = ? AND cname = ?" , [sid , courseInfo.name]);
+
+        if(data.length !== 0) {
+
+            return res.json({msg: "不可加選與已選課程同名的課程"});
+        }
+    } catch (err) {
+
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
+
+    console.log("Update course_selection");
+    //新增course_selection
+    try {
+
+        await queryAsync("INSERT INTO course_selection (sid , cid , cname) VALUES (? , ? , ?)" , [sid , cid , courseInfo.name]);
+
+    } catch (err) {
+
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
+
+    console.log("Update course");
+    //更新course
+    try {
+
+        await queryAsync("UPDATE course SET current_quantity = ? WHERE cid = ?" , [courseInfo.current_quantity + 1 , cid]);
+
+    } catch (err) {
+
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
+
+    console.log("Update students");
+    //更新students
+    try {
+
+        await queryAsync("UPDATE students SET credit = ? WHERE sid = ?" , [studentInfo.credit + courseInfo.credit , sid]);
+
+    } catch (err) {
+
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
+
+    console.log("Get timeTable");
+    var timeTable;
+    //整理課表
+    try {
+
+        timeTable = await queryAsync("SELECT * FROM course_timetable WHERE cid = ?" , [cid]);
+
+    } catch (err) {
+
+        console.log(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
+
+    console.log("Insert timeTable");
+    //新增課表
+    for(let i = 0 ; i < timeTable.length ; i++) {
+        console.log(i);
+        try {
+
+            await queryAsync("INSERT INTO student_timetable (sid , cid , timeid , name) VALUES (? , ? , ? , ?)" , [sid , cid , timeTable[i].timeid , courseInfo.name]);
+
+        } catch (err) {
+
+            console.log(err.message);
+            return res.status(500).json({msg: "伺服器內部錯誤"});
+        }
+    }
+
+    console.log("Final")
+    return res.json({msg: "加選成功"});
 });
 
 module.exports = router;

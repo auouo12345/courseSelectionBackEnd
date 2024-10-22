@@ -4,7 +4,7 @@ var router = express.Router();
 router.get('/' , (req , res) => {
 
     req.session.destroy();
-    res.json({msg: "登出成功"});
+    return res.json({msg: "登出成功"});
 });
 
 module.exports = router;

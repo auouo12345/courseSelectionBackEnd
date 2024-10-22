@@ -31,7 +31,10 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:63342',
+  credentials: true
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

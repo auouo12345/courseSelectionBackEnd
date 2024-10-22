@@ -3,40 +3,56 @@ var router = express.Router();
 var bcrypt = require('bcrypt');
 var db = require('./connect');
 
-router.post('/' , (req , res) =>{
+//使用Promise包裝query
+function queryAsync(query, params) {
+
+    return new Promise((resolve, reject) => {
+
+        db.query(query, params, (err, results) => {
+
+            if (err) {
+
+                return reject(err);
+            }
+
+            resolve(results);
+        });
+    });
+}
+
+router.post('/' , async (req , res) =>{
 
     var tid = req.body.tid;
 
-    db.query("SELECT * FROM teachers WHERE tid = ?" , [tid] , (err , data) => {
+    try {
 
-        if(err){
+        var data = await queryAsync("SELECT * FROM teachers WHERE tid = ?" , [tid]);
 
-            console.error(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
+        if(data.length !== 0) {
 
-        } else if(data.length !== 0) {
-
-            res.json({msg: "帳號已存在"});
+            return res.json({msg: "帳號已存在"});
         }
-    })
+    } catch (err) {
+
+        console.error(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
 
     var name = req.body.name;
     var dept = req.body.dept;
     var password = req.body.password;
     var hashPassword = bcrypt.hashSync(password , 10);
 
-    db.query("INSERT INTO teachers VALUES (? , ? , ? , ? )" , [tid , name , dept  , hashPassword] , err => {
+    try {
 
-        if(err) {
+        await queryAsync("INSERT INTO teachers VALUES (? , ? , ? , ?)" , [tid , name , dept , hashPassword]);
+        return res.json({msg: "註冊成功"});
 
-            console.error(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤"});
+    } catch (err) {
 
-        } else {
-
-            res.json({msg: "註冊成功"});
-        }
-    })
+        console.error(err.message);
+        return res.status(500).json({msg: "伺服器內部錯誤"});
+    }
 });
 
 module.exports = router;

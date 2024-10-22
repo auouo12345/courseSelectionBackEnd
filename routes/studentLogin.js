@@ -13,11 +13,11 @@ router.post('/' , (req , res) =>{
         if(err) {
 
             console.log(err.message);
-            res.status(500).json({msg: "伺服器內部錯誤", login: false});
+            return res.status(500).json({msg: "伺服器內部錯誤", login: false});
 
         } else if(data.length === 0){
 
-            res.json({msg: "帳號不存在", login: false});
+            return res.json({msg: "帳號不存在", login: false});
 
         } else {
 
