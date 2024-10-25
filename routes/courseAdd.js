@@ -24,8 +24,9 @@ router.post('/' , async (req , res) => {
     var sid = req.session.sid;
     var cid = req.body.cid;
 
-    var courseInfo;
     //整理課程資訊
+    var courseInfo;
+
     try {
 
         let data = await queryAsync("SELECT * FROM course WHERE cid = ?" , [cid]);
@@ -44,8 +45,9 @@ router.post('/' , async (req , res) => {
         return res.status(500).json({msg: "伺服器內部錯誤"});
     }
 
-    var studentInfo;
     //整理學生資訊
+    var studentInfo;
+
     try {
 
         let data = await queryAsync("SELECT * FROM students WHERE sid = ?" , [sid]);
@@ -124,22 +126,11 @@ router.post('/' , async (req , res) => {
         return res.status(500).json({msg: "伺服器內部錯誤"});
     }
 
-    console.log("Update course");
-    //更新course
+    console.log("Update course and students");
+    //更新course、students
     try {
 
         await queryAsync("UPDATE course SET current_quantity = ? WHERE cid = ?" , [courseInfo.current_quantity + 1 , cid]);
-
-    } catch (err) {
-
-        console.log(err.message);
-        return res.status(500).json({msg: "伺服器內部錯誤"});
-    }
-
-    console.log("Update students");
-    //更新students
-    try {
-
         await queryAsync("UPDATE students SET credit = ? WHERE sid = ?" , [studentInfo.credit + courseInfo.credit , sid]);
 
     } catch (err) {
@@ -148,9 +139,11 @@ router.post('/' , async (req , res) => {
         return res.status(500).json({msg: "伺服器內部錯誤"});
     }
 
+
     console.log("Get timeTable");
-    var timeTable;
     //整理課表
+    var timeTable;
+
     try {
 
         timeTable = await queryAsync("SELECT * FROM course_timetable WHERE cid = ?" , [cid]);
@@ -164,10 +157,10 @@ router.post('/' , async (req , res) => {
     console.log("Insert timeTable");
     //新增課表
     for(let i = 0 ; i < timeTable.length ; i++) {
-        console.log(i);
+
         try {
 
-            await queryAsync("INSERT INTO student_timetable (sid , cid , timeid , name) VALUES (? , ? , ? , ?)" , [sid , cid , timeTable[i].timeid , courseInfo.name]);
+            await queryAsync("INSERT INTO student_timetable (sid , cid , timeid , cname) VALUES (? , ? , ? , ?)" , [sid , cid , timeTable[i].timeid , courseInfo.name]);
 
         } catch (err) {
 

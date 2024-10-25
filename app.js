@@ -14,6 +14,7 @@ var teacherRegisterRouter = require('./routes/teacherRegister');
 var teacherLoginRouter = require('./routes/teacherLogin');
 var logoutRouter = require('./routes/logout');
 var courseAddRouter = require('./routes/courseAdd');
+var courseDropRouter = require('./routes/courseDrop');
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/api/teacherRegister' , teacherRegisterRouter);
 app.use('/api/teacherLogin' , teacherLoginRouter);
 app.use('/api/logout' , logoutRouter);
 app.use('/api/courseAdd' , courseAddRouter);
+app.use('/api/courseDrop' , courseDropRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
