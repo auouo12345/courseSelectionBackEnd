@@ -60,7 +60,7 @@ ul,ol{
   max-width: 100%;
   left: -30px;
   text-decoration: none;
-  font-size: 60px;
+  font-size: 3vw;
   color: #222f45;
 }
 
@@ -158,11 +158,11 @@ ul,ol{
 
 .selected-courses-grabbed {
   user-select: none;
-  cursor: grab; /* ¨Ï¥Î¤â¶Õ«ü¼Ð */
+  cursor: grab; /* ï¿½Ï¥Î¤ï¿½Õ«ï¿½ï¿½ï¿½ */
 }
 
 .selected-courses-grabbed:active {
-  cursor: grabbing; /* ·í³Q¿ï¤¤®É§ïÅÜ«ü¼Ð */
+  cursor: grabbing; /* ï¿½ï¿½ï¿½Qï¿½ï¤¤ï¿½É§ï¿½ï¿½Ü«ï¿½ï¿½ï¿½ */
 }
 
 
@@ -284,6 +284,11 @@ ul,ol{
   flex-direction: row;
 }
 
+.condition .lbl{
+  font-size: 1vw;
+  margin-bottom: 10px;
+}
+
 .homepage-container .search-input {
   width: 100%;
   height: 40px;
@@ -298,7 +303,7 @@ ul,ol{
   padding: 8px 8px;
   background-color: #3496ff;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 1vw;
   color: white;
   border: none;
   width: 14%;

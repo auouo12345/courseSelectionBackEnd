@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const teacherAccount = document.getElementById("teacher-account");
   const studentAccount = document.getElementById("student-account");
 
-  // ªwªw°Êµe¥Í¦¨
+ 
   function createBubble() {
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return color;
   }
 
-  // ¨C¬í¥Í¦¨¤@­Óªwªw
+  // ï¿½Cï¿½ï¿½ï¿½Í¦ï¿½ï¿½@ï¿½Óªwï¿½w
   setInterval(createBubble, 1000);
 
-  // ³B²z±b¤áÃş«¬¿ï¾Ü
+  // ï¿½Bï¿½zï¿½bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   teacherAccount.addEventListener("click", function () {
     selectedAccount = 'Teacher';
     teacherAccount.classList.add("selected");
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     teacherAccount.classList.remove("selected");
   });
 
-  // ³B²zµn¤J
+  // ï¿½Bï¿½zï¿½nï¿½J
   loginForm.addEventListener("submit", async e => {
 
     e.preventDefault();
