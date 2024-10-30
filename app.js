@@ -32,7 +32,7 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(cors({
-  origin: 'http://localhost:63342',
+  origin: 'http://localhost:4000',
   credentials: true
 }));
 
