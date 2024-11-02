@@ -283,6 +283,80 @@ ul,ol{
   background-color: #2979cc;
 }
 
+.homepage-container .course-search-results{
+  width: 38vw;
+}
+
+.course-search-results {
+  background-color: #f9f9f9;
+  border-radius: 1vw;
+}
+
+.course-list-scrollbar {
+  display: flex;
+  flex-direction: column;
+  margin-left: -1vw;
+  gap: 0.3vw;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 26vw;
+  width: 37.5vw;
+}
+
+.course-list-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  left: 10px;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
+.course-list-scrollbar:hover::-webkit-scrollbar {
+  opacity: 1;
+}
+
+.course-list-scrollbar::-webkit-scrollbar-track {
+  background-color: rgb(243, 247, 246);
+  border-radius: 10px;
+  margin: 1px 0px;
+  top: 0;
+  -webkit-box-shadow: none;
+}
+
+.course-list-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(1, 178, 178);
+}
+
+
+.course-item {
+  padding: 1vw;
+  background-color: #ffffff;
+  border: 0.1vw solid #ddd;
+  border-radius: 0.5vw;
+  box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
+}
+
+.course-item p {
+  margin: 0.5vw 0;
+  font-size: 1vw;
+  color: #333;
+}
+
+.add-course-button {
+  font-family: "Noto Sans TC", sans-serif;
+  padding: 0.5vw 1vw;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  font-size: 1vw;
+  margin-top: 0.5vw;
+}
+
+.add-course-button:hover {
+  background-color: #45a049;
+}
+
 .homepage-container .selected-courses {
   list-style-type: none;
   padding: 0;
@@ -369,4 +443,4 @@ ul,ol{
   .main{
     padding-top: 2.5vw;
   }
-} 
+}    
