@@ -227,7 +227,8 @@ ul,ol{
 
 .condition .lbl{
   font-size: 1vw;
-  margin-bottom: 0.5vw;
+  margin: 0 0.2vw 0.2vw 0;
+  font-family: "Noto Sans TC", sans-serif;
 }
 
 .homepage-container .search-input {
@@ -296,6 +297,7 @@ ul,ol{
   display: flex;
   flex-direction: column;
   margin-left: -1vw;
+  margin-top: -1vw;
   gap: 0.3vw;
   overflow-y: auto; /* Enable vertical scrolling */
   max-height: 26vw;
@@ -333,12 +335,15 @@ ul,ol{
   border: 0.1vw solid #ddd;
   border-radius: 0.5vw;
   box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  margin-left: -1vw;
 }
 
 .course-item p {
-  margin: 0.5vw 0;
+  margin: 0.5vw 0.3vw;
   font-size: 1vw;
   color: #333;
+  font-family: "Noto Sans TC", sans-serif;
 }
 
 .add-course-button {
@@ -350,7 +355,9 @@ ul,ol{
   border-radius: 0.5vw;
   cursor: pointer;
   font-size: 1vw;
-  margin-top: 0.5vw;
+  font-weight: 700;
+  position: absolute;
+  left: 60vw;
 }
 
 .add-course-button:hover {
