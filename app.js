@@ -15,6 +15,7 @@ var teacherLoginRouter = require('./routes/teacherLogin');
 var logoutRouter = require('./routes/logout');
 var courseAddRouter = require('./routes/courseAdd');
 var courseDropRouter = require('./routes/courseDrop');
+var studentTimetableRouter = require('./routes/studentTimetable');
 
 var app = express();
 
@@ -33,7 +34,7 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(cors({
-  origin: 'http://localhost:4000',
+  origin: 'http://localhost:63342',
   credentials: true
 }));
 
@@ -46,6 +47,7 @@ app.use('/api/teacherLogin' , teacherLoginRouter);
 app.use('/api/logout' , logoutRouter);
 app.use('/api/courseAdd' , courseAddRouter);
 app.use('/api/courseDrop' , courseDropRouter);
+app.use('/api/studentTimetable' , studentTimetableRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
