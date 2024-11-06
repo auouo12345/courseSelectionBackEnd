@@ -11,7 +11,6 @@ async function timetableHandler() {
     });
 
     let result = await res.json();
-    console.log(result);
 
     for(let i = 0 ; i < result.length ; i++) {
 
@@ -52,27 +51,59 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
     })
 
     let result = await res.json();
+    resultPage.innerHTML = "";
 
     for(let i = 0 ; i < result.length ; i++) {
+
+        let cid = result[i].cid
+        let name = result[i].name;
 
         let courseItem = document.createElement("div");
         courseItem.className = "course-item";
 
         let cidP = document.createElement("p");
-        cidP.innerText = result[i].cid;
+        cidP.innerText = cid;
         courseItem.appendChild(cidP);
 
         let nameP = document.createElement("p");
-        nameP.innerHTML = "<strong>" + result[i].name + "</strong>";
+        nameP.innerHTML = "<strong>" + name + "</strong>";
         courseItem.appendChild(nameP);
 
         let btn = document.createElement("button");
         btn.className = "add-course-button";
         btn.innerText = "加選";
         courseItem.appendChild(btn);
+        btn.addEventListener('click' , async e => {
+
+            let res = await fetch("http://localhost:4000/api/courseAdd", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    "cid": cid
+                }),
+                credentials: 'include'
+            });
+
+            let result = await res.json();
+            alert(result.msg);
+            await timetableHandler();
+        })
 
         resultPage.appendChild(courseItem);
     }
+})
 
-    console.log(result);
+document.getElementById("logout").addEventListener('click' , async e => {
+
+    let res = await fetch("http://localhost:4000/api/logout", {
+        method: "GET",
+        credentials: 'include'
+    });
+
+    let result = await res.json();
+    alert(result.msg);
+    window.location.href = 'index.html';
 })

@@ -19,15 +19,17 @@ router.post('/' , async (req , res) => {
 
     if(req.body.week.length !== 0) {
 
-        sql += `AND cid IN (SELECT cid FROM course_timetable WHERE (timeid / 14 = '${req.body.week[0]}'`;
+        sql += `AND cid IN (SELECT cid FROM course_timetable WHERE (FLOOR(timeid / 14) = ${req.body.week[0]}`;
 
         for(let i = 1 ; i < req.body.week.length ; i++) {
 
-            sql += ` OR timeid / 14 = '${req.body.week[i]}'`;
+            sql += ` OR FLOOR(timeid / 14) = ${req.body.week[i]}`;
         }
 
         sql += "))";
     }
+
+    console.log(sql);
 
     db.query(sql , [pattern , pattern] , (err , data) => {
 
