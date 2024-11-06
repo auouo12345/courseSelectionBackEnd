@@ -69,6 +69,36 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
         nameP.innerHTML = "<strong>" + name + "</strong>";
         courseItem.appendChild(nameP);
 
+        let res = await fetch("http://localhost:4000/api/courseTimetable", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "cid": cid
+            }),
+            credentials: 'include'
+        });
+
+        let week = ["星期一" , "星期二" , "星期三" , "星期四" , "星期五"]
+        let timetable = await res.json();
+
+        if(timetable.length !== 0) {
+
+            let dayP = document.createElement("p");
+            dayP.innerHTML += week[Math.floor(timetable[0].timeid / 14)] + ` 第${timetable[0].timeid % 14 + 1}節`;
+
+            for(let j = 1 ; j < timetable.length ; j++) {
+
+                dayP.innerHTML += "<br>";
+                dayP.innerHTML += week[Math.floor(timetable[i].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
+            }
+
+            courseItem.appendChild(dayP);
+        }
+
+        //新增按鈕
         let btn = document.createElement("button");
         btn.className = "add-course-button";
         btn.innerText = "加選";

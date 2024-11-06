@@ -16,6 +16,7 @@ var logoutRouter = require('./routes/logout');
 var courseAddRouter = require('./routes/courseAdd');
 var courseDropRouter = require('./routes/courseDrop');
 var studentTimetableRouter = require('./routes/studentTimetable');
+var courseTimetableRouter = require('./routes/courseTimetable')
 var searchRouter = require('./routes/search');
 var getStudentInfo = require('./routes/getStudentInfo');
 
@@ -50,6 +51,7 @@ app.use('/api/logout' , logoutRouter);
 app.use('/api/courseAdd' , courseAddRouter);
 app.use('/api/courseDrop' , courseDropRouter);
 app.use('/api/studentTimetable' , studentTimetableRouter);
+app.use('/api/courseTimetable' , courseTimetableRouter);
 app.use('/api/search' , searchRouter);
 app.use('/api/getStudentInfo',getStudentInfo);
 
