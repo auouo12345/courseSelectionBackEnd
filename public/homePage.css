@@ -98,7 +98,7 @@ ul,ol{
 }
 
 .homepage-container .personal-info{
-  width: 17vw;
+  width: 21.33%;
   border-left-width: 0.7vw;
   border-top-width: 0.6vw;
   border-right-width: 0.6vw;
@@ -106,14 +106,14 @@ ul,ol{
 }
 
 .homepage-container .course-search{
-  width: 39.7vw;
+  width: 49.8%;
   border-top-width: 0.6vw;
   border-bottom-width: 0.6vw;
   border-radius: 1.2vw / 1.4vw;
 }
 
 .homepage-container .course-schedule{
-  width: 23vw;
+  width: 28.858%;
   border-top-width: 0.6vw;
   border-right-width: 0.7vw;
   border-bottom-width: 0.6vw;
@@ -128,10 +128,11 @@ ul,ol{
   display: block;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 17.4vw;
   min-height: 10vw;
   max-height: 17.5vw;
   margin-top: 0.25vw;
+  margin-left: -0.25rem;
+  width: 100%;
 }
 
 .selected-courses:hover::-webkit-scrollbar {
@@ -167,8 +168,6 @@ ul,ol{
 .btn,
 .btn:focus {
     position: relative;
-    min-width: 16.75vw;
-    width: 19vw;
     border: 0;
     border-radius: 0.4rem;
     background: #f4f4f5;
@@ -182,6 +181,7 @@ ul,ol{
     transition: background 250ms, box-shadow 250ms;
     padding: 0.25vw 0.25vw;
     margin: -0.5vw 0 -0.5vw -0.5vw;
+    width: 100%;
 }
 
 .btn:hover {
@@ -277,7 +277,6 @@ ul,ol{
   text-decoration: none;
   color: white;
   margin-bottom: 0.1vw;
-
 }
 
 .homepage-container .search-button:hover {
@@ -327,7 +326,6 @@ ul,ol{
   border-radius: 10px;
   background-color: rgb(1, 178, 178);
 }
-
 
 .course-item {
   padding: 1vw;
