@@ -94,7 +94,8 @@ ul,ol{
   align-items: flex-start;
   border-style: solid;
   border-color: rgb(171, 213, 255);
-  height: 38vw;
+  height: 85vh;
+  font-family: "Noto Sans TC", sans-serif;
 }
 
 .homepage-container .personal-info{
@@ -105,34 +106,18 @@ ul,ol{
   border-bottom-width: 0.6vw;
 }
 
-.homepage-container .course-search{
-  width: 49.8%;
-  border-top-width: 0.6vw;
-  border-bottom-width: 0.6vw;
-  border-radius: 1.2vw / 1.4vw;
+.homepage-container .focus-courses{
+  margin-top: 1.5vh;
 }
 
-.homepage-container .course-schedule{
-  width: 28.858%;
-  border-top-width: 0.6vw;
-  border-right-width: 0.7vw;
-  border-bottom-width: 0.6vw;
-  border-left-width: 0.6vw;
-}
-
-.course-schedule .table{
-  width: 25%;
-}
-
-.selected-courses {
+.focus-courses .selected-courses {
   display: block;
   overflow-y: auto;
   overflow-x: hidden;
-  min-height: 10vw;
-  max-height: 17.5vw;
-  margin-top: 0.25vw;
-  margin-left: -0.25rem;
-  width: 100%;
+  min-height: -0.5vh;
+  margin-left: -2rem;
+  height: 58%;
+  width: 120%;
 }
 
 .selected-courses:hover::-webkit-scrollbar {
@@ -165,15 +150,14 @@ ul,ol{
   cursor: grabbing;
 }
 
-.btn,
-.btn:focus {
+.classbtn,
+.ckassbtn:focus {
     position: relative;
     border: 0;
     border-radius: 0.4rem;
     background: #f4f4f5;
     color: #033d34;
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-size: 0.8rem;
     text-align: left;
     text-decoration: none;
     text-transform: uppercase;
@@ -181,25 +165,25 @@ ul,ol{
     transition: background 250ms, box-shadow 250ms;
     padding: 0.25vw 0.25vw;
     margin: -0.5vw 0 -0.5vw -0.5vw;
-    width: 100%;
+    width: 105%;
 }
 
-.btn:hover {
+.classbtn:hover {
     color: #14312c;
     background: #efedf7;
     box-shadow: 0.05vw 0.1vw 0.2vw rgba(185, 9, 180, 0.6);
 }
 
-.btn:active {
+.classbtn:active {
     box-shadow: -0.2vw 0.2vw 1.2vw rgba(0, 0, 0, 0.8);
 }
 
-.btn .text {
+.classbtn .text {
     position: relative;
     z-index: 2;
 }
 
-.btn .dot {
+.classbtn .dot {
     position: absolute;
     z-index: 0;
     display: block;
@@ -207,6 +191,25 @@ ul,ol{
     height: 0.5vw;
     transform-origin: 0.25vw 0.25vw;
     pointer-events: none;
+}
+
+.homepage-container .course-search{
+  width: 49.8%;
+  border-top-width: 0.6vw;
+  border-bottom-width: 0.6vw;
+  border-radius: 1.2vw / 1.4vw;
+}
+
+.homepage-container .course-schedule{
+  width: 28.858%;
+  border-top-width: 0.6vw;
+  border-right-width: 0.7vw;
+  border-bottom-width: 0.6vw;
+  border-left-width: 0.6vw;
+}
+
+.course-schedule .table{
+  width: 25%;
 }
 
 .homepage-container h2 {
@@ -360,13 +363,6 @@ ul,ol{
 
 .add-course-button:hover {
   background-color: #45a049;
-}
-
-.homepage-container .selected-courses {
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-  height: 40%;
 }
 
 .homepage-container .selected-courses li {
