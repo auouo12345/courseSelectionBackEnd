@@ -109,7 +109,7 @@ ul,ol{
 }
 
 .homepage-container .focus-courses{
-  margin-top: 1.5vh;
+  margin-top: 1vh;
 }
 
 .focus-courses .selected-courses {
@@ -118,9 +118,9 @@ ul,ol{
   overflow-x: hidden;
   border-radius: 1vw;
   margin-left: -2.1rem;
-  height: 62%;
+  height: 67%;
   width: 120%;
-  margin-top: -1vw;
+  margin-top: -0.5vw;
 }
 
 .selected-courses:hover::-webkit-scrollbar {
@@ -212,10 +212,6 @@ ul,ol{
   border-left-width: 0.6vw;
 }
 
-.course-schedule .table{
-  width: 25%;
-}
-
 .homepage-container h2 {
   color: #3496ff;
   margin-bottom: 0.75vw;
@@ -304,7 +300,7 @@ ul,ol{
   margin-left: -1vw;
   gap: 0.3vw;
   overflow-y: auto; 
-  max-height: 100%;
+  max-height: 103%;
   width: 37.5vw;
 }
 
@@ -394,6 +390,119 @@ ul,ol{
 .homepage-container .edit-schedule:hover {
   background-color: #2979cc;
 }
+
+\*--------- timetable -----*\ 
+
+.course-schedule {
+  margin-top: 10px;
+}
+
+.timetable {  
+  display: grid;  
+  grid-template-areas: ". week"  
+                       "time content";  
+  grid-template-columns: 45px auto;  /* 調整列寬比例 */
+  grid-template-rows: 35px auto;  /* 調整行高比例 */
+  width: 105%;  
+  max-width: 800px;  /* 最大寬度，避免太大 */
+  max-height: 600px;  /* 最大高度，避免太高 */
+  border: 1px solid #ECEFF1;
+  padding: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  margin-left: -2%;
+  margin-top: -2%;
+  border-radius: 1vw;
+}
+
+.week-names {  
+  grid-area: week;  
+  display: grid;  
+  grid-template-columns: repeat(5, 1fr);  
+  text-transform: uppercase;  
+  font-size: 8px;  
+}  
+
+.week-names > div {  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  width: 100%;  
+  height: 100%;  
+  box-shadow: inset 1px 0 0 #ECEFF1;  
+  padding: 3px;
+}  
+
+.time-interval {  
+  grid-area: time;  
+  display: grid;  
+  grid-template-rows: repeat(12, 1fr);   
+  font-size: 10px;  
+  width: 100%;
+}  
+
+.time-interval > div {  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  width: 100%;  
+  height: auto;  
+  box-shadow: inset 0 1px 0 0 #ECEFF1;  
+  padding: 2px;  
+}  
+
+.content {  
+  grid-area: content;  
+  display: grid;  
+  grid-template-rows: repeat(12, 1fr);   
+  grid-template-columns: repeat(5, 1fr);  
+}  
+
+.content > div {  
+  box-shadow: inset 1px 0 0 #ECEFF1, inset 0 1px 0 0 #ECEFF1;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;  
+  padding: 5px;  
+}  
+
+.weekend {  
+  background: #f5f5f5;  
+  color: #777;  
+}
+
+.accent-orange-gradient,
+.accent-green-gradient,
+.accent-pink-gradient,
+.accent-cyan-gradient,
+.accent-purple-gradient {
+  padding: 5px;  
+  font-size: 10px;  
+  text-align: center;
+  color: white;
+}
+
+.accent-orange-gradient {
+  background: linear-gradient(135deg, #FFA726, #FB8C00);
+}
+
+.accent-green-gradient {
+  background: linear-gradient(135deg, #66BB6A, #43A047);
+}
+
+.accent-pink-gradient {
+  background: linear-gradient(135deg, #F06292, #E91E63);
+}
+
+.accent-cyan-gradient {
+  background: linear-gradient(135deg, #4DD0E1, #00ACC1);
+}
+
+.accent-purple-gradient {
+  background: linear-gradient(135deg, #BA68C8, #8E24AA);
+}
+
 
 @media (max-width: 800px){
   .site-menu ul{
