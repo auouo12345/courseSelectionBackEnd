@@ -114,8 +114,8 @@ ul,ol{
   display: block;
   overflow-y: auto;
   overflow-x: hidden;
-  min-height: -0.5vh;
-  margin-left: -2rem;
+  min-height: -0.6vh;
+  margin-left: -2.1rem;
   height: 58%;
   width: 120%;
 }
