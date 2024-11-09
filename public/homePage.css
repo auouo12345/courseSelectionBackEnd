@@ -220,7 +220,7 @@ ul,ol{
 
 .search-container{
   display: flex;
-  width: 100%;
+  width: 115%;
 }
 
 .condition{
@@ -348,17 +348,21 @@ ul,ol{
 }
 
 .add-course-button {
-  font-family: "Noto Sans TC", sans-serif;
-  padding: 0.5vw 1vw;
   background-color: #4CAF50;
+  width: 10%;
+  height: 1.985vw;
+  position: relative;
+  font-family: "Noto Sans TC", sans-serif;
+  padding: 0.4vw 0.4vw;
+  font-size: 1vw;
   color: white;
   border: none;
-  border-radius: 0.5vw;
-  cursor: pointer;
-  font-size: 1vw;
   font-weight: 700;
-  position: absolute;
-  left: 60vw;
+  border-radius: 0.2vw;
+  cursor: pointer;
+  text-align: center;
+  height: 2vw;
+  margin: auto auto;
 }
 
 .add-course-button:hover {
