@@ -19,6 +19,8 @@ var studentTimetableRouter = require('./routes/studentTimetable');
 var courseTimetableRouter = require('./routes/courseTimetable')
 var searchRouter = require('./routes/search');
 var getStudentInfo = require('./routes/getStudentInfo');
+var addFocus = require('./routes/addFocus');
+var getFocusList = require('./routes/getFocusList');
 
 var app = express();
 
@@ -54,6 +56,8 @@ app.use('/api/studentTimetable' , studentTimetableRouter);
 app.use('/api/courseTimetable' , courseTimetableRouter);
 app.use('/api/search' , searchRouter);
 app.use('/api/getStudentInfo',getStudentInfo);
+app.use('/api/addFocus', addFocus);
+app.use('/api/getFocusList', getFocusList);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
