@@ -2,16 +2,16 @@ var express = require('express');
 var router = express.Router();
 var db = require('./connect');
 
-router.get('/' , (req , res) => {
+router.get('/', (req, res) => {
 
     var sid = req.session.sid;
 
-    db.query('' , [sid] , (err , data) => {
+    db.query('SELECT cid , cname FROM attention WHERE sid = ?', [sid], (err, data) => {
 
-        if(err) {
+        if (err) {
 
             console.log(err.message);
-            return res.status(500).json({msg: "伺服器內部錯誤"});
+            return res.status(500).json({ msg: "伺服器內部錯誤" });
 
         } else {
 

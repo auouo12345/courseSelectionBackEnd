@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
     // 檢查是否已經關注過
     try {
-        let data = await queryAsync(" ",);
+        let data = await queryAsync("SELECT * FROM attention WHERE sid = ? AND cid = ?", [sid, cid]);
         if (data.length !== 0) {
             return res.json({ msg: "已經關注該課程" });
         }
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 
     // 新增關注記錄
     try {
-        await queryAsync(" ",);
+        await queryAsync("INSERT INTO attention (sid, cid) VALUES (?, ?)", [sid, cid]);
         return res.json({ msg: "關注成功" });
     } catch (err) {
         console.log(err.message);
