@@ -1,9 +1,9 @@
 async function timetableHandler() {
 
-    for(let i = 1 ; i <= 70 ; i++) {
-
-        document.getElementById(String(i)).innerText = '';
-    }
+    // for(let i = 1 ; i <= 70 ; i++) {
+    //
+    //     document.getElementById(String(i)).innerText = '';
+    // }
 
     let res = await fetch("http://localhost:4000/api/studentTimetable" , {
         method: "GET",
@@ -12,9 +12,61 @@ async function timetableHandler() {
 
     let result = await res.json();
 
+    // for(let i = 0 ; i < result.length ; i++) {
+    //
+    //     document.getElementById(result[i].timeid + 1).innerText = result[i].cname;
+    // }
+
+    document.getElementsByClassName("selected-courses")[0].replaceChildren();
+
+    res = await fetch("http://localhost:4000/api/getFocusList" , {
+        method: "GET",
+        credentials: 'include'
+    });
+
+    result = await res.json();
+
     for(let i = 0 ; i < result.length ; i++) {
 
-        document.getElementById(result[i].timeid + 1).innerText = result[i].cname;
+        let cid = result[i].cid;
+        let cname = result[i].cname;
+
+        let li = document.createElement("li");
+
+        let btn = document.createElement("button");
+        btn.className = "classbtn";
+        btn.setAttribute("data-bs-toggle" , "modal");
+        btn.setAttribute("data-bs-target" , "#courseModal");
+        let res = await fetch("http://localhost:4000/api/courseTimetable", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "cid": cid
+            }),
+            credentials: 'include'
+        });
+
+        let week = ["星期一" , "星期二" , "星期三" , "星期四" , "星期五"]
+        let timetable = res.json();
+        let dataStr = cname;
+
+        for(let j = 0 ; j < timetable.length ; j++) {
+
+            dataStr += "<br>";
+            dataStr += week[Math.floor(timetable[i].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
+        }
+
+        console.log(dataStr)
+
+        btn.setAttribute("data-course" , dataStr);
+        btn.setAttribute("selectTarget" , cid)
+        btn.innerHTML = dataStr;
+
+        li.appendChild(btn);
+        document.getElementsByClassName("selected-courses")[0].appendChild(li);
     }
 }
 
@@ -81,7 +133,7 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
             credentials: 'include'
         });
 
-        let week = ["星期一" , "星期二" , "星期三" , "星期四" , "星期五"]
+        let week = ["星期一" , "星期二" , "星期三" , "星期四" , "星期五"];
         let timetable = await res.json();
 
         if(timetable.length !== 0) {
@@ -92,7 +144,7 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
             for(let j = 1 ; j < timetable.length ; j++) {
 
                 dayP.innerHTML += "<br>";
-                dayP.innerHTML += week[Math.floor(timetable[i].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
+                dayP.innerHTML += week[Math.floor(timetable[j].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
             }
 
             courseItem.appendChild(dayP);
@@ -101,11 +153,11 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
         //新增按鈕
         let btn = document.createElement("button");
         btn.className = "add-course-button";
-        btn.innerText = "加選";
+        btn.innerText = "關注";
         courseItem.appendChild(btn);
         btn.addEventListener('click' , async e => {
 
-            let res = await fetch("http://localhost:4000/api/courseAdd", {
+            let res = await fetch("http://localhost:4000/api/addFocus", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

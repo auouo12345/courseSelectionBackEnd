@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('./connect');
 
-// ¨Ï¥ÎPromise¥]¸Ëquery
+// ä½¿ç”¨PromiseåŒ…è£query
 function queryAsync(query, params) {
     return new Promise((resolve, reject) => {
         db.query(query, params, (err, results) => {
@@ -16,24 +16,24 @@ router.post('/', async (req, res) => {
     var sid = req.session.sid;
     var cid = req.body.cid;
 
-    // ÀË¬d¬O§_¤w¸gÃöª`¹L
+    // æª¢æŸ¥æ˜¯å¦å·²ç¶“é—œæ³¨é
     try {
         let data = await queryAsync("SELECT * FROM attention WHERE sid = ? AND cid = ?", [sid, cid]);
         if (data.length !== 0) {
-            return res.json({ msg: "¤w¸gÃöª`¸Ó½Òµ{" });
+            return res.json({ msg: "å·²ç¶“é—œæ³¨è©²èª²ç¨‹" });
         }
     } catch (err) {
         console.log(err.message);
-        return res.status(500).json({ msg: "¦øªA¾¹¤º³¡¿ù»~" });
+        return res.status(500).json({ msg: "ä¼ºæœå™¨å…§éƒ¨éŒ¯èª¤" });
     }
 
-    // ·s¼WÃöª`°O¿ı
+    // æ–°å¢é—œæ³¨è¨˜éŒ„
     try {
         await queryAsync("INSERT INTO attention (sid, cid) VALUES (?, ?)", [sid, cid]);
-        return res.json({ msg: "Ãöª`¦¨¥\" });
+        return res.json({ msg: "é—œæ³¨æˆåŠŸ" });
     } catch (err) {
         console.log(err.message);
-        return res.status(500).json({ msg: "¦øªA¾¹¤º³¡¿ù»~" });
+        return res.status(500).json({ msg: "ä¼ºæœå™¨å…§éƒ¨éŒ¯èª¤" });
     }
 });
 

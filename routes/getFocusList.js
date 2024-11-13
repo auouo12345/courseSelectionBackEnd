@@ -11,11 +11,11 @@ router.get('/', (req, res) => {
         if (err) {
 
             console.log(err.message);
-            return res.status(500).json({ msg: "¦øªA¾¹¤º³¡¿ù»~" });
+            return res.status(500).json({ msg: "ä¼ºæœå™¨å…§éƒ¨éŒ¯èª¤" });
 
         } else {
 
-            return res.json(data[0]);
+            return res.json(data);
         }
     })
 });
