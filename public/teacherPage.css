@@ -53,6 +53,17 @@ ul,ol{
   list-style: none;
 }
 
+.header-inner .ruleButton ,.messageButton{
+  background-color: transparent;
+  border-color: transparent;
+  margin-left: 0vw;
+  margin-right: 1vw;
+  font-size: 1vw;
+  color: #564c4c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .header-logo{
   display: block;
   position: relative;
@@ -101,14 +112,14 @@ ul,ol{
 
 .mode .modal-body{
   .modal-body p {
-      font-size: 1rem; /* èª¿æ•´æ®µè½å­—é«”å¤§å° */
-      line-height: 1.6; /* èª¿æ•´è¡Œé–“è· */
+      font-size: 1rem; /* èª¿æ?´æ®µ??½å??é«?å¤§å?? */
+      line-height: 1.6; /* èª¿æ?´è?????è·? */
   }
 
   .modal-body h5 {
-      font-size: 1.25rem; /* å¢åŠ æ¨™é¡Œå­—é«”å¤§å° */
-      font-weight: bold; /* åŠ ç²—æ¨™é¡Œ */
-      color: #333; /* é¡¯ç¤ºæ·±è‰²æ¨™é¡Œ */
+      font-size: 1.25rem; /* å¢????æ¨?é¡?å­?é«?å¤§å?? */
+      font-weight: bold; /* ???ç²?æ¨?é¡? */
+      color: #333; /* é¡¯ç¤ºæ·±è?²æ??é¡? */
   }
 
   .modal-body ul {
@@ -124,7 +135,7 @@ ul,ol{
       font-weight: bold;
   }
 
-  /* å¢åŠ æ®µè½é–“è· */
+  /* å¢????æ®µè?½é??è·? */
   .modal-body p + p,
   .modal-body h5 + p,
   .modal-body ul + p {
@@ -449,7 +460,7 @@ ul,ol{
   display: grid;  
   grid-template-areas: ". week"  
                        "time content";  
-  grid-template-columns: 45px auto;  /* ï¿½Õ¾ï¿½Cï¿½eï¿½ï¿½ï¿½ */
+  grid-template-columns: 45px auto;  /* ï¿½Õ¾ï¿½Cï¿½eï¿½ï¿½ï¿? */
   grid-template-rows: 35px auto;  /* ï¿½Õ¾ï¿½æ°ªï¿½ï¿½ï¿½ */
   width: 105%;  
   max-width: 800px;  /* ï¿½Ì¤jï¿½eï¿½×¡Aï¿½×§Kï¿½Ó¤j */

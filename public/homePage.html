@@ -20,7 +20,7 @@
                             <li><a href="homePage.html">首頁</a></li>
                             <li type="button" class="ruleButton " data-bs-toggle="modal" data-bs-target="#ruleModal">選課規則</li>
                             <li><a href="#">通知</a></li>
-                            <li><a href="#">私訊</a></li>
+                            <li type="button" class="messageButton" data-bs-toggle="modal" data-bs-target="#messageModal" >私訊</li>
                         </ul>
                     </nav>
                 </div>
@@ -194,22 +194,22 @@
                     <div>friday</div>  
                 </div>  
                 <div class="time-interval">  
-                    <div>08:00 - 09:00</div>
-                    <div>09:00 - 10:00</div>  
-                    <div>10:00 - 11:00</div>
-                    <div>11:00 - 12:00</div>  
-                    <div>12:00 - 13:00</div>  
-                    <div>13:00 - 14:00</div>  
-                    <div>14:00 - 15:00</div>  
-                    <div>15:00 - 16:00</div>
-                    <div>16:00 - 17:00</div>
-                    <div>17:00 - 18:00</div>
-                    <div>18:00 - 19:00</div>
-                    <div>19:00 - 20:00</div>
+                    <div>08:10 - 09:00</div>
+                    <div>09:10 - 10:00</div>  
+                    <div>10:10 - 11:00</div>
+                    <div>11:10 - 12:00</div>  
+                    <div>12:10 - 13:00</div>  
+                    <div>13:10 - 14:00</div>  
+                    <div>14:10 - 15:00</div>  
+                    <div>15:10 - 16:00</div>
+                    <div>16:10 - 17:00</div>
+                    <div>17:10 - 18:00</div>
+                    <div>18:10 - 19:00</div>
+                    <div>19:10 - 20:00</div>
+                    <div>20:10 - 21:00</div>
+                    <div>21:10 - 22:00</div>
                 </div>  
                 <div class="content">  
-                    <div></div>
-                    <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
@@ -259,13 +259,37 @@
                     <div class="accent-purple-gradient">人工智慧概論</div>
                     <div class="accent-pink-gradient">資料庫系統</div>
                     <div></div>
+
+                    <div></div>
+                    <div class="accent-cyan-gradient">操作系統</div>
+                    <div class="accent-purple-gradient">人工智慧概論</div>
+                    <div class="accent-pink-gradient">資料庫系統</div>
+                    <div></div>
+
+                    <div></div>
+                    <div class="accent-cyan-gradient">操作系統</div>
+                    <div class="accent-purple-gradient">人工智慧概論</div>
+                    <div class="accent-pink-gradient">資料庫系統</div>
+                    <div></div>
+
+                    <div></div>
+                    <div class="accent-cyan-gradient">操作系統</div>
+                    <div class="accent-purple-gradient">人工智慧概論</div>
+                    <div class="accent-pink-gradient">資料庫系統</div>
+                    <div></div>
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>  
             </div>  
           </div>
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- focusModal -->
 <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
@@ -283,7 +307,7 @@
       </div>
   </div>
 </div>
-<!-- Modal -->
+<!-- ruleModal -->
 <div class="modal fade" id="ruleModal" tabindex="-1" aria-labelledby="ruleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
@@ -371,6 +395,33 @@
           <p>
               我們致力於提供簡單明瞭的選課介面，以幫助學生更輕鬆地管理課程。若有任何問題，請隨時聯繫資訊處尋求幫助。祝您選課順利！
           </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- messageModal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="messageModalLabel">傳送對話</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">收件人:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">訊息:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">傳送</button>
       </div>
     </div>
   </div>
