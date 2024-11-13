@@ -15,6 +15,7 @@ function queryAsync(query, params) {
 router.post('/', async (req, res) => {
     var sid = req.session.sid;
     var cid = req.body.cid;
+    var cname = req.body.cname;
 
     // 檢查是否已經關注過
     try {
