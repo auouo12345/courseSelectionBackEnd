@@ -1,0 +1,81 @@
+*{
+    font-family:微軟正黑體;  
+  }
+  
+  body{
+    background-color: white;
+    width: 100vw;
+  }
+  
+  #username, #password, h3, #fullname, #department ,#username2, #password2{
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+    font-style: italic;
+    color: #df5334;
+  }
+  
+  h5{
+    margin: 20px;
+    color: #a3a2a3;
+  }
+  
+  h5:hover{
+    color: black;
+  }
+  
+  #container1, #container2{
+    padding-top: 20px;
+    width: 230px;
+    font-style: italic;
+    font-weight: 700;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border-top: 10px solid #df5334;
+    box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+    /*定位對齊*/
+    position:relative;   
+    margin: auto auto;
+    top: 100px;
+    text-align:center;  
+  }
+
+  #container1{
+    height: 280px;
+  }
+
+  #container2{
+    visibility: hidden;   /*剛開始消失*/
+    height: 380px;
+  }
+
+  
+  .system_name{
+    /*定位對齊*/
+    position:relative;   
+    margin: auto;
+    top: 100px;
+    text-align:center; 
+  }
+  
+  .submit{
+    color: white;  
+    background: #df5334;
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0px;
+  }
+  
+  .submit:hover{
+    background: #db6937;
+  }
+  
+  input{
+    padding: 5px;
+    border: none; 
+    border:solid 1px #ccc;
+    border-radius: 5px;
+  }
