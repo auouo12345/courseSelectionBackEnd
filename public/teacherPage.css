@@ -40,7 +40,7 @@
   padding-right: 1.8vw;
 }
 
-.site-menu li a{
+.site-menu li a {
   margin-left: 0vw;
   margin-right: 1vw;
   font-size: 1vw;
@@ -86,6 +86,54 @@ ul,ol{
   width: 80%;
   border-radius: 1.5vw;
   box-shadow: 0 0vw 0.2vw rgba(0, 0, 0, 0.15);
+}
+
+.header-inner .ruleButton{
+  background-color: transparent;
+  border-color: transparent;
+  margin-left: 0vw;
+  margin-right: 1vw;
+  font-size: 1vw;
+  color: #564c4c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mode .modal-body{
+  .modal-body p {
+      font-size: 1rem; /* 調整段落字體大小 */
+      line-height: 1.6; /* 調整行間距 */
+  }
+
+  .modal-body h5 {
+      font-size: 1.25rem; /* 增加標題字體大小 */
+      font-weight: bold; /* 加粗標題 */
+      color: #333; /* 顯示深色標題 */
+  }
+
+  .modal-body ul {
+      padding-left: 20px;
+  }
+
+  .modal-body li {
+      font-size: 1rem;
+      line-height: 1.6;
+  }
+
+  .modal-body strong {
+      font-weight: bold;
+  }
+
+  /* 增加段落間距 */
+  .modal-body p + p,
+  .modal-body h5 + p,
+  .modal-body ul + p {
+      margin-top: 1rem;
+  }
+
+  .modal-body h5 {
+      margin-top: 1.5rem;
+  }      
 }
 
 .homepage-container .personal-info, 
@@ -401,11 +449,11 @@ ul,ol{
   display: grid;  
   grid-template-areas: ". week"  
                        "time content";  
-  grid-template-columns: 45px auto;  /* �վ�C�e��� */
-  grid-template-rows: 35px auto;  /* �վ�氪��� */
+  grid-template-columns: 45px auto;  /* �վ�C�e��� */
+  grid-template-rows: 35px auto;  /* �վ�氪��� */
   width: 105%;  
-  max-width: 800px;  /* �̤j�e�סA�קK�Ӥj */
-  max-height: 600px;  /* �̤j���סA�קK�Ӱ� */
+  max-width: 800px;  /* �̤j�e�סA�קK�Ӥj */
+  max-height: 600px;  /* �̤j���סA�קK�Ӱ� */
   border: 1px solid #ECEFF1;
   padding: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);

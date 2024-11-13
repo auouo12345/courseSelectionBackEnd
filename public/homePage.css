@@ -53,6 +53,54 @@ ul,ol{
   list-style: none;
 }
 
+.header-inner .ruleButton{
+  background-color: transparent;
+  border-color: transparent;
+  margin-left: 0vw;
+  margin-right: 1vw;
+  font-size: 1vw;
+  color: #564c4c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mode .modal-body{
+  .modal-body p {
+      font-size: 1rem; /* 調整段落字體大小 */
+      line-height: 1.6; /* 調整行間距 */
+  }
+
+  .modal-body h5 {
+      font-size: 1.25rem; /* 增加標題字體大小 */
+      font-weight: bold; /* 加粗標題 */
+      color: #333; /* 顯示深色標題 */
+  }
+
+  .modal-body ul {
+      padding-left: 20px;
+  }
+
+  .modal-body li {
+      font-size: 1rem;
+      line-height: 1.6;
+  }
+
+  .modal-body strong {
+      font-weight: bold;
+  }
+
+  /* 增加段落間距 */
+  .modal-body p + p,
+  .modal-body h5 + p,
+  .modal-body ul + p {
+      margin-top: 1rem;
+  }
+
+  .modal-body h5 {
+      margin-top: 1.5rem;
+  }      
+}
+
 .header-logo{
   display: block;
   position: relative;

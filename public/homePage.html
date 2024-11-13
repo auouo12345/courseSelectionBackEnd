@@ -18,7 +18,7 @@
                     <nav class="site-menu">
                         <ul>
                             <li><a href="homePage.html">首頁</a></li>
-                            <li><a href="guide.html">選課規則</a></li>
+                            <li type="button" class="ruleButton " data-bs-toggle="modal" data-bs-target="#ruleModal">選課規則</li>
                             <li><a href="#">通知</a></li>
                             <li><a href="#">私訊</a></li>
                         </ul>
@@ -31,9 +31,9 @@
             <!-- 左側個人資訊模塊 -->
             <div class="module personal-info">
                 <h2>個人資訊</h2>
-                <p>姓名: 張三</p>
+                <p>姓名: 哈巴狗</p>
                 <p>學號: 2023101234</p>
-                <p>已修學分: 45</p>
+                <p>已修學分: 4</p>
                 <p>目前學期: 第5學期</p>
                 <div class="logoutButton">
                     <a id="logout" class="logout">登出</a>
@@ -281,6 +281,98 @@
             <button type="cancel" class="btn btn-secondary" data-bs-dismiss="modal">退關注</button>
           </div>
       </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ruleModal" tabindex="-1" aria-labelledby="ruleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="ruleModalLabel">選課系統說明書</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <p>
+              歡迎使用 <strong>放假大學選課系統</strong>，本說明旨在協助大學學生順利完成選課流程，包括註冊登入、課表查詢、課程加選、退選、以及選課通知等功能。請仔細閱讀以下說明，以確保能充分利用選課系統的所有功能。
+          </p>
+          
+          <h5 class="mt-4">1. 使用者註冊與登入</h5>
+          <p>
+              學生需使用學校的電子郵件註冊並登入系統。登入後，您將能夠根據不同身分（學生或教師）進行相應的選課操作。
+          </p>
+          <p><strong>登入流程：</strong></p>
+          <ul>
+              <li>選擇身分（學生或教師）。</li>
+              <li>輸入學校信箱及密碼，點擊登入。</li>
+              <li>若登入成功，將自動導向選課頁面；若密碼錯誤，系統將彈出提示。</li>
+          </ul>
+          
+          <h5 class="mt-4">2. 課表查詢</h5>
+          <p>
+              登入系統後，學生可查看當前學期的完整課表。課表中包含所有已加選的課程、關注列表，以及預選課程。
+          </p>
+          <p><strong>查詢方式：</strong></p>
+          <ul>
+              <li>登入系統後，自動顯示當前學期課表。</li>
+              <li>課表中列出所有已匯入的課程，包含時間、地點等詳細信息。</li>
+          </ul>
+          
+          <h5 class="mt-4">3. 加選課程</h5>
+          <p>
+              學生可在課程檢索頁面瀏覽課程並進行加選。系統將自動檢查課表是否衝突、課程餘額等條件，以確保選課的成功率。
+          </p>
+          <p><strong>加選流程：</strong></p>
+          <ul>
+              <li>在課程檢索頁面中，瀏覽並選擇想加選的課程。</li>
+              <li>系統會檢查課程衝突、身分類別限制等條件。</li>
+              <li>若符合條件，加選成功後，課程將自動更新至學生的課表中。</li>
+              <li>若不符合加選條件，系統會顯示錯誤提示（如：衝堂、課程額滿等）。</li>
+          </ul>
+          
+          <h5 class="mt-4">4. 退選課程</h5>
+          <p>
+              學生可退選已加選的課程。退選後，系統會自動更新學生課表及課程選課人數。
+          </p>
+          <p><strong>退選流程：</strong></p>
+          <ul>
+              <li>查看已加選的課程列表，選擇要退選的課程，點擊退選按鈕。</li>
+              <li>系統會彈出確認對話框，詢問是否確定退選。</li>
+              <li>若確定退選，課程將從課表中移除，並更新課程餘額。</li>
+          </ul>
+          
+          <h5 class="mt-4">5. 選課通知與提醒</h5>
+          <p>
+              系統會在選課期間提供各類通知，包括選課截止日提醒、課程變動等，幫助學生掌握選課時間和重要資訊。
+          </p>
+          <p><strong>通知方式：</strong></p>
+          <ul>
+              <li>登入系統後，系統將顯示選課及退選的截止日期。</li>
+              <li>當課程時間、地點或教師發生變動時，系統將自動發送通知。</li>
+          </ul>
+          
+          <h5 class="mt-4">6. 課程檢索</h5>
+          <p>
+              學生可以使用關鍵字或篩選條件來搜尋可選課程，並查看詳細資訊，如課程內容、評分標準、課程教材等。
+          </p>
+          <p><strong>檢索方式：</strong></p>
+          <ul>
+              <li>在課程檢索欄輸入關鍵字（如課程名稱、授課教師、課程類別等）。</li>
+              <li>系統根據檢索條件返回符合的課程列表，點擊任一課程可查看其詳細內容。</li>
+          </ul>
+          
+          <h5 class="mt-4">7. 使用者注意事項</h5>
+          <ul>
+              <li>每學期選課期間，系統可承受多數學生同時操作，請放心使用。</li>
+              <li>請注意選課與退選的時間限制，避免錯過截止日期。</li>
+              <li>選課時請留意課程衝突提醒，以及課程餘額的顯示，確保選課順利。</li>
+              <li>系統可在多種主流瀏覽器上運行，建議使用 <strong>Chrome</strong>、<strong>Firefox</strong> 或 <strong>Microsoft Edge</strong> 進行選課操作。</li>
+          </ul>
+          
+          <p>
+              我們致力於提供簡單明瞭的選課介面，以幫助學生更輕鬆地管理課程。若有任何問題，請隨時聯繫資訊處尋求幫助。祝您選課順利！
+          </p>
+      </div>
+    </div>
   </div>
 </div>
 <script src="homePage.js"></script>

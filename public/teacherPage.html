@@ -13,12 +13,12 @@
     <div class="homepage-container">
         <header class="header">
             <div class="header-inner">
-                <a class="header-logo" href="homePage.html">放假大學 </a>
+                <a class="header-logo" href="teacherPage.html">放假大學 </a>
                 <div class="header-site-menu">
                     <nav class="site-menu">
                         <ul>
                             <li><a href="teacherPage.html">首頁</a></li>
-                            <li><a href="guide.html">選課規則</a></li>
+                            <li type="button" class="ruleButton " data-bs-toggle="modal" data-bs-target="#ruleModal">選課規則</li>
                             <li><a href="#">通知</a></li>
                             <li><a href="#">私訊</a></li>
                         </ul>
@@ -33,7 +33,7 @@
                 <h2>個人資訊</h2>
                 <p>姓名: 李淑芬</p>
                 <p>教師編號: 123456</p>
-                <p>所屬: ○○学院</p>
+                <p>所屬: ○○學系</p>
                 <div class="logoutButton">
                     <a id="logout" class="logout">登出</a>
                 </div>
@@ -203,8 +203,129 @@
                       <input type="text" class="form-control" id="courseNameInput">
                   </div>
                   <div class="mb-3">
-                      <label for="courseTimeInput" class="form-label">上課時間</label>
-                      <input type="text" class="form-control" id="courseTimeInput">
+                      <label for="courseTime" class="form-label">上課時間</label>
+                      <table class="schedule-selector">
+                        <tr>
+                            <th>Time</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                        </tr>
+                        <tr>
+                            <td>08:10 - 09:00</td>
+                            <td><button onclick="selectTime('monday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '08:10 - 09:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>09:10 - 10:00</td>
+                            <td><button onclick="selectTime('monday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '09:10 - 10:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>10:10 - 11:00</td>
+                            <td><button onclick="selectTime('monday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '10:10 - 11:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>11:10 - 12:00</td>
+                            <td><button onclick="selectTime('monday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '11:10 - 12:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>12:10 - 13:00</td>
+                            <td><button onclick="selectTime('monday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '12:10 - 13:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>13:10 - 14:00</td>
+                            <td><button onclick="selectTime('monday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '13:10 - 14:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>14:10 - 15:00</td>
+                            <td><button onclick="selectTime('monday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '14:10 - 15:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>15:10 - 16:00</td>
+                            <td><button onclick="selectTime('monday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '15:10 - 16:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>16:10 - 17:00</td>
+                            <td><button onclick="selectTime('monday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '16:10 - 17:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>17:10 - 18:00</td>
+                            <td><button onclick="selectTime('monday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '17:10 - 18:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>18:10 - 19:00</td>
+                            <td><button onclick="selectTime('monday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '18:10 - 19:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>19:10 - 20:00</td>
+                            <td><button onclick="selectTime('monday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '19:10 - 20:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>20:10 - 21:00</td>
+                            <td><button onclick="selectTime('monday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '20:10 - 21:00')">選擇</button></td>
+                        </tr>
+                        <tr>
+                            <td>21:10 - 22:00</td>
+                            <td><button onclick="selectTime('monday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button onclick="selectTime('tuesday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button onclick="selectTime('wednesday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button onclick="selectTime('thursday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button onclick="selectTime('friday', '21:10 - 22:00')">選擇</button></td>
+                        </tr>
+                    </table>             
                   </div>
                   <div class="mb-3">
                       <label for="courseLocationInput" class="form-label">上課地點</label>
@@ -218,16 +339,112 @@
       </div>
   </div>
 </div>
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="ruleModal" tabindex="-1" aria-labelledby="ruleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="ruleModalLabel">選課系統說明書</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>
+                歡迎使用 <strong>放假大學選課系統</strong>，本說明旨在協助大學學生順利完成選課流程，包括註冊登入、課表查詢、課程加選、退選、以及選課通知等功能。請仔細閱讀以下說明，以確保能充分利用選課系統的所有功能。
+            </p>
+            
+            <h5 class="mt-4">1. 使用者註冊與登入</h5>
+            <p>
+                學生需使用學校的電子郵件註冊並登入系統。登入後，您將能夠根據不同身分（學生或教師）進行相應的選課操作。
+            </p>
+            <p><strong>登入流程：</strong></p>
+            <ul>
+                <li>選擇身分（學生或教師）。</li>
+                <li>輸入學校信箱及密碼，點擊登入。</li>
+                <li>若登入成功，將自動導向選課頁面；若密碼錯誤，系統將彈出提示。</li>
+            </ul>
+            
+            <h5 class="mt-4">2. 課表查詢</h5>
+            <p>
+                登入系統後，學生可查看當前學期的完整課表。課表中包含所有已加選的課程、關注列表，以及預選課程。
+            </p>
+            <p><strong>查詢方式：</strong></p>
+            <ul>
+                <li>登入系統後，自動顯示當前學期課表。</li>
+                <li>課表中列出所有已匯入的課程，包含時間、地點等詳細信息。</li>
+            </ul>
+            
+            <h5 class="mt-4">3. 加選課程</h5>
+            <p>
+                學生可在課程檢索頁面瀏覽課程並進行加選。系統將自動檢查課表是否衝突、課程餘額等條件，以確保選課的成功率。
+            </p>
+            <p><strong>加選流程：</strong></p>
+            <ul>
+                <li>在課程檢索頁面中，瀏覽並選擇想加選的課程。</li>
+                <li>系統會檢查課程衝突、身分類別限制等條件。</li>
+                <li>若符合條件，加選成功後，課程將自動更新至學生的課表中。</li>
+                <li>若不符合加選條件，系統會顯示錯誤提示（如：衝堂、課程額滿等）。</li>
+            </ul>
+            
+            <h5 class="mt-4">4. 退選課程</h5>
+            <p>
+                學生可退選已加選的課程。退選後，系統會自動更新學生課表及課程選課人數。
+            </p>
+            <p><strong>退選流程：</strong></p>
+            <ul>
+                <li>查看已加選的課程列表，選擇要退選的課程，點擊退選按鈕。</li>
+                <li>系統會彈出確認對話框，詢問是否確定退選。</li>
+                <li>若確定退選，課程將從課表中移除，並更新課程餘額。</li>
+            </ul>
+            
+            <h5 class="mt-4">5. 選課通知與提醒</h5>
+            <p>
+                系統會在選課期間提供各類通知，包括選課截止日提醒、課程變動等，幫助學生掌握選課時間和重要資訊。
+            </p>
+            <p><strong>通知方式：</strong></p>
+            <ul>
+                <li>登入系統後，系統將顯示選課及退選的截止日期。</li>
+                <li>當課程時間、地點或教師發生變動時，系統將自動發送通知。</li>
+            </ul>
+            
+            <h5 class="mt-4">6. 課程檢索</h5>
+            <p>
+                學生可以使用關鍵字或篩選條件來搜尋可選課程，並查看詳細資訊，如課程內容、評分標準、課程教材等。
+            </p>
+            <p><strong>檢索方式：</strong></p>
+            <ul>
+                <li>在課程檢索欄輸入關鍵字（如課程名稱、授課教師、課程類別等）。</li>
+                <li>系統根據檢索條件返回符合的課程列表，點擊任一課程可查看其詳細內容。</li>
+            </ul>
+            
+            <h5 class="mt-4">7. 使用者注意事項</h5>
+            <ul>
+                <li>每學期選課期間，系統可承受多數學生同時操作，請放心使用。</li>
+                <li>請注意選課與退選的時間限制，避免錯過截止日期。</li>
+                <li>選課時請留意課程衝突提醒，以及課程餘額的顯示，確保選課順利。</li>
+                <li>系統可在多種主流瀏覽器上運行，建議使用 <strong>Chrome</strong>、<strong>Firefox</strong> 或 <strong>Microsoft Edge</strong> 進行選課操作。</li>
+            </ul>
+            
+            <p>
+                我們致力於提供簡單明瞭的選課介面，以幫助學生更輕鬆地管理課程。若有任何問題，請隨時聯繫資訊處尋求幫助。祝您選課順利！
+            </p>
+        </div>
+      </div>
+    </div>
+</div>
+<script src="teacherEdit.js"></script>
 <script src="homePage.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
     // 使用 JavaScript 來動態更新 Modal 的內容
     // 使用 JavaScript 來動態更新 Modal 的內容
 var courseModal = document.getElementById('courseModal');
 courseModal.addEventListener('show.bs.modal', function (event) {
     // 取得觸發模態框顯示的按鈕
     var button = event.relatedTarget;
-    
+    var modalElement = this;
+    modalElement.classList.add('fade');  // 加上fade類別
+    modalElement.classList.add('slide-in');  // 加上自訂的滑動動畫
     // 從按鈕中獲取課程資訊
     var courseName = button.getAttribute('data-course');
     var courseTime = button.getAttribute('data-time');
@@ -240,6 +457,13 @@ courseModal.addEventListener('show.bs.modal', function (event) {
     
     // 設置要被更新的課程項目 ID
     document.getElementById('saveChangesButton').setAttribute('data-course-id', button.closest('.course-item').id);
+});
+
+var ruleModal = document.getElementById('ruleModal');
+ruleModal.addEventListener('show.bs.modal', function (event) {
+    var modalElement = this;
+    modalElement.classList.add('fade');  // 加上fade類別
+    modalElement.classList.add('slide-in');  // 加上自訂的滑動動畫
 });
 
 document.getElementById('saveChangesButton').addEventListener('click', function () {
