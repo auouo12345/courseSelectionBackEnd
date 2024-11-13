@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 
     // 新增關注記錄
     try {
-        await queryAsync("INSERT INTO attention (sid, cid) VALUES (?, ?)", [sid, cid]);
+        await queryAsync("INSERT INTO attention (sid, cid, cname) VALUES (?, ?, ?)", [sid, cid, cname]);
         return res.json({ msg: "關注成功" });
     } catch (err) {
         console.log(err.message);

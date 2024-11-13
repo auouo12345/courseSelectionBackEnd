@@ -21,6 +21,7 @@ var searchRouter = require('./routes/search');
 var getStudentInfo = require('./routes/getStudentInfo');
 var addFocus = require('./routes/addFocus');
 var getFocusList = require('./routes/getFocusList');
+var getTeacherInfo = require('./routes/getTeacherInfo');
 
 var app = express();
 
@@ -58,6 +59,7 @@ app.use('/api/search' , searchRouter);
 app.use('/api/getStudentInfo',getStudentInfo);
 app.use('/api/addFocus', addFocus);
 app.use('/api/getFocusList', getFocusList);
+app.use('/api/getTeacherInfo', getTeacherInfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
