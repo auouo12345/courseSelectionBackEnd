@@ -1,9 +1,12 @@
-async function timetableHandler() {
+//更新頁面資訊
+async function pageInfoHandler() {
 
-    // for(let i = 1 ; i <= 70 ; i++) {
-    //
-    //     document.getElementById(String(i)).innerText = '';
-    // }
+    //更新右側課表
+    for(let i = 0 ; i < 70 ; i++) {
+
+        document.getElementById(i).innerText = '';
+        document.getElementById(i).style.backgroundColor = 'white';
+    }
 
     let res = await fetch("http://localhost:4000/api/studentTimetable" , {
         method: "GET",
@@ -12,11 +15,14 @@ async function timetableHandler() {
 
     let result = await res.json();
 
-    // for(let i = 0 ; i < result.length ; i++) {
-    //
-    //     document.getElementById(result[i].timeid + 1).innerText = result[i].cname;
-    // }
+    for(let i = 0 ; i < result.length ; i++) {
 
+        let target = document.getElementById(result[i].timeid);
+        target.innerText = result[i].cname;
+        target.style.backgroundColor = "green";
+    }
+
+    //更新左下方關注列表
     document.getElementsByClassName("selected-courses")[0].replaceChildren();
 
     res = await fetch("http://localhost:4000/api/getFocusList" , {
@@ -37,6 +43,7 @@ async function timetableHandler() {
         btn.className = "classbtn";
         btn.setAttribute("data-bs-toggle" , "modal");
         btn.setAttribute("data-bs-target" , "#courseModal");
+
         let res = await fetch("http://localhost:4000/api/courseTimetable", {
             method: "POST",
             headers: {
@@ -50,16 +57,18 @@ async function timetableHandler() {
         });
 
         let week = ["星期一" , "星期二" , "星期三" , "星期四" , "星期五"]
-        let timetable = res.json();
+        let timetable = await res.json();
         let dataStr = cname;
 
         for(let j = 0 ; j < timetable.length ; j++) {
 
-            dataStr += "<br>";
-            dataStr += week[Math.floor(timetable[i].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
-        }
+            let target = document.getElementById(timetable[j].timeid);
+            target.style.backgroundColor = target.innerText === "" ? "yellow" : "red";
+            target.innerText += '\n' + cname;
 
-        console.log(dataStr)
+            dataStr += "<br>";
+            dataStr += week[Math.floor(timetable[j].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
+        }
 
         btn.setAttribute("data-course" , dataStr);
         btn.setAttribute("selectTarget" , cid)
@@ -68,9 +77,24 @@ async function timetableHandler() {
         li.appendChild(btn);
         document.getElementsByClassName("selected-courses")[0].appendChild(li);
     }
-}
 
-timetableHandler();
+    //更新個人資訊
+    res = await fetch("http://localhost:4000/api/getStudentInfo", {
+        method: "GET",
+        credentials: 'include'
+    });
+
+    result = await res.json();
+    console.log(result);
+
+    document.querySelector('#personal-info').innerHTML = `
+       <h2>個人資訊</h2>
+       <p>姓名: ${result.name}</p>
+       <p>學號: ${result.sid}</p>
+       <p>系所: ${result.dept}</p>
+       <p>學分: ${result.credit}</p>
+   `;
+}
 
 document.getElementById('searchForm').addEventListener('submit' , async e => {
 
@@ -171,7 +195,7 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
 
             let result = await res.json();
             alert(result.msg);
-            await timetableHandler();
+            await pageInfoHandler();
         })
 
         resultPage.appendChild(courseItem);
@@ -188,7 +212,8 @@ document.getElementById("logout").addEventListener('click' , async e => {
     let result = await res.json();
     alert(result.msg);
     window.location.href = 'index.html';
-})
+});
+
 //loading animation #Ian
 document.addEventListener("DOMContentLoaded", () => {
   const fadeInElements = document.querySelectorAll(".fade-in");
@@ -199,81 +224,124 @@ document.addEventListener("DOMContentLoaded", () => {
           element.classList.add("show");
       }, index * 300); // 每個部件延遲300ms
   });
+
+  pageInfoHandler();
 });
+
+document.getElementById('courseAdd').addEventListener('click' , async e => {
+
+    let res = await fetch("http://localhost:4000/api/courseAdd", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            "cid": selectTarget
+        }),
+        credentials: 'include'
+    });
+
+    let result = await res.json();
+
+    if(result.msg === "加選成功") {
+
+        await fetch("http://localhost:4000/api/dropFocus", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "cid": selectTarget
+            }),
+            credentials: 'include'
+        });
+    }
+
+    alert(result.msg);
+    pageInfoHandler();
+})
+
+document.getElementById('cancel').addEventListener('click' , async e=> {
+
+    let res = await fetch("http://localhost:4000/api/dropFocus", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            "cid": selectTarget
+        }),
+        credentials: 'include'
+    });
+
+    let result = await res.json();
+    alert(result.msg);
+    pageInfoHandler();
+});
+
 //info update #Ian
-document.addEventListener("DOMContentLoaded", function () {
-  // 判斷用戶角色
-  fetch('/api/getUserRole', {
-      method: 'GET',
-      credentials: 'include', // 附帶 session cookie
-  })
-      .then((response) => {
-          if (!response.ok) {
-              throw new Error('無法獲取用戶角色');
-          }
-          return response.json();
-      })
-      .then((userData) => {
-          if (userData.role === 'teacher') {
-              // 調用教師 API
-              loadPersonalInfo('/api/getTeacherInfo', '教師編號', '所屬部門');
-          } else if (userData.role === 'student') {
-              // 調用學生 API
-              loadPersonalInfo('/api/getStudentInfo', '學號', '科系');
-          } else {
-              alert('未知角色，請聯繫管理員');
-          }
-      })
-      .catch((err) => {
-          console.error('獲取用戶角色失敗:', err);
-      });
-
-  // 加載個人資訊函數
-  function loadPersonalInfo(apiUrl, idLabel, deptLabel) {
-      fetch(apiUrl, {
-          method: 'GET',
-          credentials: 'include',
-      })
-          .then((response) => {
-              if (!response.ok) {
-                  throw new Error('無法獲取個人資訊');
-              }
-              return response.json();
-          })
-          .then((data) => {
-              if (data.msg) {
-                  alert(data.msg); // 提示錯誤信息
-                  return;
-              }
-
-              // 更新 Personal Info 區塊
-              document.querySelector('.personal-info').innerHTML = `
-                  <h2>個人資訊</h2>
-                  <p>姓名: ${data.name}</p>
-                  <p>${idLabel}: ${data.id}</p>
-                  <p>${deptLabel}: ${data.dept}</p>
-                  <div class="logoutButton">
-                      <a id="logout" class="logout">登出</a>
-                  </div>
-              `;
-
-              // 綁定登出按鈕邏輯
-              bindLogout();
-          })
-          .catch((err) => {
-              console.error('無法獲取個人資訊:', err);
-          });
-  }
-
-  // 登出按鈕邏輯
-  function bindLogout() {
-      document.querySelector('#logout').addEventListener('click', function () {
-          fetch('/api/logout', { method: 'POST', credentials: 'include' })
-              .then(() => {
-                  window.location.href = 'index.html'; // 返回登入頁
-              })
-              .catch((err) => console.error('登出失敗:', err));
-      });
-  }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   // 判斷用戶角色
+//   fetch('/api/getUserRole', {
+//       method: 'GET',
+//       credentials: 'include', // 附帶 session cookie
+//   })
+//       .then((response) => {
+//           if (!response.ok) {
+//               throw new Error('無法獲取用戶角色');
+//           }
+//           return response.json();
+//       })
+//       .then((userData) => {
+//           if (userData.role === 'teacher') {
+//               // 調用教師 API
+//               loadPersonalInfo('/api/getTeacherInfo', '教師編號', '所屬部門');
+//           } else if (userData.role === 'student') {
+//               // 調用學生 API
+//               loadPersonalInfo('/api/getStudentInfo', '學號', '科系');
+//           } else {
+//               alert('未知角色，請聯繫管理員');
+//           }
+//       })
+//       .catch((err) => {
+//           console.error('獲取用戶角色失敗:', err);
+//       });
+//
+//   // 加載個人資訊函數
+//   function loadPersonalInfo(apiUrl, idLabel, deptLabel) {
+//       fetch(apiUrl, {
+//           method: 'GET',
+//           credentials: 'include',
+//       })
+//           .then((response) => {
+//               if (!response.ok) {
+//                   throw new Error('無法獲取個人資訊');
+//               }
+//               return response.json();
+//           })
+//           .then((data) => {
+//               if (data.msg) {
+//                   alert(data.msg); // 提示錯誤信息
+//                   return;
+//               }
+//
+//               console.log(data);
+//
+//               // 更新 Personal Info 區塊
+//               document.querySelector('#personal-info').innerHTML = `
+//                   <h2>個人資訊</h2>
+//                   <p>姓名: ${data.name}</p>
+//                   <p>${idLabel}: ${data.id}</p>
+//                   <p>${deptLabel}: ${data.dept}</p>
+//               `;
+//
+//           })
+//           .catch((err) => {
+//               console.error('無法獲取個人資訊:', err);
+//           });
+//   }
+// });
 

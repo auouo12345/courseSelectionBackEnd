@@ -19,6 +19,7 @@ var courseTimetableRouter = require('./routes/courseTimetable')
 var searchRouter = require('./routes/search');
 var getStudentInfo = require('./routes/getStudentInfo');
 var addFocus = require('./routes/addFocus');
+var dropFocus = require('./routes/dropFocus')
 var getFocusList = require('./routes/getFocusList');
 var getTeacherInfo = require('./routes/getTeacherInfo');//by Ian
 var getUserRoleRouter = require('./routes/getUserRole');//by Ian
@@ -64,6 +65,7 @@ app.use('/api/courseTimetable' , courseTimetableRouter);
 app.use('/api/search' , searchRouter);
 app.use('/api/getStudentInfo',getStudentInfo);
 app.use('/api/addFocus', addFocus);
+app.use('/api/dropFocus', dropFocus);
 app.use('/api/getFocusList', getFocusList);
 app.use('/api/getTeacherInfo', getTeacherInfo);//by Ian
 app.use('/api/getUserRole', getUserRoleRouter);//by Ian
