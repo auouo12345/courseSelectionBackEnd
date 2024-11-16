@@ -42,40 +42,40 @@
               <div class="focus-courses">
                 <h2>關注列表</h2>
                 <ul class="selected-courses">
-                  <li>
-                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="微處理機 (星期一 08:00 - 10:00)星期二 15:00 - 17:00 "> 微處理機 (星期一 08:00 - 10:00)<br>(星期二 15:00 - 17:00)
-                    </button>
-                  </li>
-                  <li>
-                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">
-                      計算機科學基礎 (星期三 14:00 - 16:00)
-                  </button>
-                  </li>
-                  <li>
-                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">
-                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">
-                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">
-                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">
-                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">
-                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>
-                    </button>
-                  </li>
+<!--                  <li>-->
+<!--                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="微處理機 (星期一 08:00 - 10:00)星期二 15:00 - 17:00 "> 微處理機 (星期一 08:00 - 10:00)<br>(星期二 15:00 - 17:00)-->
+<!--                    </button>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">-->
+<!--                      計算機科學基礎 (星期三 14:00 - 16:00)-->
+<!--                  </button>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">-->
+<!--                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>-->
+<!--                    </button>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">-->
+<!--                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>-->
+<!--                    </button>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">-->
+<!--                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>-->
+<!--                    </button>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">-->
+<!--                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>-->
+<!--                    </button>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <button class="classbtn" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="計算機科學基礎 (星期三 14:00 - 16:00)">-->
+<!--                      <span class="text">計算機科學基礎 (星期三 14:00 - 16:00)</span>-->
+<!--                    </button>-->
+<!--                  </li>-->
                 </ul>
               </div>
             </div>
@@ -302,7 +302,7 @@
               <!-- 此處會顯示選擇的課程資訊 -->
           </div>
           <div class="modal-footer">
-            <button type="add" class="btn btn-secondary" data-bs-dismiss="modal">加選</button>
+            <button id="courseAdd" type="add" class="btn btn-secondary" data-bs-dismiss="modal">加選</button>
             <button type="cancel" class="btn btn-secondary" data-bs-dismiss="modal">退關注</button>
           </div>
       </div>
@@ -432,9 +432,12 @@
   <script>
     // 使用 JavaScript 來動態更新 Modal 的內容
     var courseModal = document.getElementById('courseModal');
+    var selectTarget = -1
+
     courseModal.addEventListener('show.bs.modal', function (event) {
       var button = event.relatedTarget;
       var courseInfo = button.getAttribute('data-course');
+      selectTarget = button.getAttribute('selectTarget');
 
       var modalBody = courseModal.querySelector('.modal-body');
       modalBody.textContent = courseInfo;

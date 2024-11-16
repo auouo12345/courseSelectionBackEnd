@@ -28,22 +28,29 @@ router.post('/', async (req, res) => {
     }
 
     // 從資料庫查詢課程名稱
-    let cname;
+    let courseInfo;
+
     try {
-        let courseData = await queryAsync("SELECT cname FROM courses WHERE cid = ?", [cid]);
-        if (courseData.length > 0) {
-            cname = courseData[0].cname;
+
+        let data = await queryAsync("SELECT * FROM course WHERE cid = ?" , [cid]);
+
+        if(data.length === 0) {
+
+            return res.json({msg: "課程不存在"});
+
         } else {
-            return res.status(404).json({ msg: "找不到課程" });
+
+            courseInfo = data[0];
         }
     } catch (err) {
+
         console.log(err.message);
-        return res.status(500).json({ msg: "伺服器內部錯誤" });
+        return res.status(500).json({msg: "伺服器內部錯誤"});
     }
 
     // 新增關注記錄
     try {
-        await queryAsync("INSERT INTO attention (sid, cid, cname) VALUES (?, ?, ?)", [sid, cid, cname]);
+        await queryAsync("INSERT INTO attention (sid, cid, cname) VALUES (?, ?, ?)", [sid, cid, courseInfo.name]);
         return res.json({ msg: "關注成功" });
     } catch (err) {
         console.log(err.message);

@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
               loadPersonalInfo('/api/getTeacherInfo', '教師編號', '所屬部門');
           } else if (userData.role === 'student') {
               // 調用學生 API
-              loadPersonalInfo('/api/getSudentInfo', '學號', '科系');
+              loadPersonalInfo('/api/getStudentInfo', '學號', '科系');
           } else {
               alert('未知角色，請聯繫管理員');
           }

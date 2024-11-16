@@ -6,7 +6,7 @@ router.get('/' , (req , res) => {
 
     var sid = req.session.sid;
 
-    db.query('SELECT name , credit , sid FROM student WHERE sid = ?' , [sid] , (err , data) => {
+    db.query('SELECT name , credit , sid FROM students WHERE sid = ?' , [sid] , (err , data) => {
 
         if(err) {
 
