@@ -30,20 +30,17 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('無法找到 .personal-info 元素');
             return;
         }
-
-        console.log(tid);
+        
 
         personalInfoDiv.innerHTML = 
             "<h2>個人資訊</h2>" +
             "<p>姓名:" + data.name + "</p>" +
-            "<p>教師編號:" + String(tid) + "</p>" +
+            "<p>教師編號:" + data.tid + "</p>" +
             "<p>所屬:" + data.dept + "</p>" +
             "<div class='logoutButton'>" + 
                 "<a id='logout' class='logout'>登出</a>" +
             "</div>"
         ;
-
-        console.log(tid);
 
         document.querySelector('#logout').addEventListener('click', function () {
             fetch('/api/logout', { method: 'POST', credentials: 'include' })

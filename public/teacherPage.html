@@ -42,10 +42,10 @@
             <!-- 中間課程檢索模塊 -->
             <div class="fade-in module course-search">
                 <h2>課程管理</h2>
-                <form id="searchForm">
+                <form id="teacherSearchForm">
                     <div class="search-container">
                         <input name="pattern" type="text" placeholder="搜尋課程名稱或代碼" class="search-input">
-                        <button type="submit" class="search-button">搜尋</button>
+                        <button type="submmit" class="search-button">搜尋</button>
                     </div>
                     <div class="condition">
                         <div class="checkbox-wrapper-42">
@@ -108,11 +108,11 @@
             <h2>課表</h2>
             <div class="timetable">  
                 <div class="week-names">  
-                    <div>monday</div>  
-                    <div>tuesday</div>  
-                    <div>wednesday</div>  
-                    <div>thursday</div>  
-                    <div>friday</div>  
+                    <div>Mon</div>  
+                    <div>Tue</div>  
+                    <div>Wed</div>  
+                    <div>Thu</div>  
+                    <div>Fri</div>  
                 </div>  
                 <div class="time-interval">  
                   <div>08:10 - 09:00</div>
@@ -214,7 +214,7 @@
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="courseModalLabel">課程編輯</h5>
+              <h3 class="modal-title" id="courseModalLabel">課程編輯</h3>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -228,123 +228,123 @@
                       <table class="schedule-selector">
                         <tr>
                             <th>Time</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
                         </tr>
                         <tr>
                             <td>08:10 - 09:00</td>
-                            <td><button onclick="selectTime('monday', '08:10 - 09:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '08:10 - 09:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '08:10 - 09:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '08:10 - 09:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('wednesday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('thursday', '08:10 - 09:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('friday', '08:10 - 09:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>09:10 - 10:00</td>
-                            <td><button onclick="selectTime('monday', '09:10 - 10:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '09:10 - 10:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '09:10 - 10:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '09:10 - 10:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('monday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('tuesday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('wednesday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('thursday', '09:10 - 10:00')">選擇</button></td>
+                            <td><button  class="button-4" onclick="selectTime('friday', '09:10 - 10:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>10:10 - 11:00</td>
-                            <td><button onclick="selectTime('monday', '10:10 - 11:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '10:10 - 11:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '10:10 - 11:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '10:10 - 11:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '10:10 - 11:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '10:10 - 11:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>11:10 - 12:00</td>
-                            <td><button onclick="selectTime('monday', '11:10 - 12:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '11:10 - 12:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '11:10 - 12:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '11:10 - 12:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '11:10 - 12:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '11:10 - 12:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>12:10 - 13:00</td>
-                            <td><button onclick="selectTime('monday', '12:10 - 13:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '12:10 - 13:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '12:10 - 13:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '12:10 - 13:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '12:10 - 13:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '12:10 - 13:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>13:10 - 14:00</td>
-                            <td><button onclick="selectTime('monday', '13:10 - 14:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '13:10 - 14:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '13:10 - 14:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '13:10 - 14:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '13:10 - 14:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '13:10 - 14:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>14:10 - 15:00</td>
-                            <td><button onclick="selectTime('monday', '14:10 - 15:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '14:10 - 15:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '14:10 - 15:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '14:10 - 15:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '14:10 - 15:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '14:10 - 15:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>15:10 - 16:00</td>
-                            <td><button onclick="selectTime('monday', '15:10 - 16:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '15:10 - 16:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '15:10 - 16:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '15:10 - 16:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '15:10 - 16:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '15:10 - 16:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>16:10 - 17:00</td>
-                            <td><button onclick="selectTime('monday', '16:10 - 17:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '16:10 - 17:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '16:10 - 17:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '16:10 - 17:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '16:10 - 17:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '16:10 - 17:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>17:10 - 18:00</td>
-                            <td><button onclick="selectTime('monday', '17:10 - 18:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '17:10 - 18:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '17:10 - 18:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '17:10 - 18:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '17:10 - 18:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '17:10 - 18:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>18:10 - 19:00</td>
-                            <td><button onclick="selectTime('monday', '18:10 - 19:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '18:10 - 19:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '18:10 - 19:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '18:10 - 19:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '18:10 - 19:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '18:10 - 19:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>19:10 - 20:00</td>
-                            <td><button onclick="selectTime('monday', '19:10 - 20:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '19:10 - 20:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '19:10 - 20:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '19:10 - 20:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '19:10 - 20:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '19:10 - 20:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>20:10 - 21:00</td>
-                            <td><button onclick="selectTime('monday', '20:10 - 21:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '20:10 - 21:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '20:10 - 21:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '20:10 - 21:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '20:10 - 21:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '20:10 - 21:00')">選擇</button></td>
                         </tr>
                         <tr>
                             <td>21:10 - 22:00</td>
-                            <td><button onclick="selectTime('monday', '21:10 - 22:00')">選擇</button></td>
-                            <td><button onclick="selectTime('tuesday', '21:10 - 22:00')">選擇</button></td>
-                            <td><button onclick="selectTime('wednesday', '21:10 - 22:00')">選擇</button></td>
-                            <td><button onclick="selectTime('thursday', '21:10 - 22:00')">選擇</button></td>
-                            <td><button onclick="selectTime('friday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('monday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('tuesday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('wednesday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('thursday', '21:10 - 22:00')">選擇</button></td>
+                            <td><button class="button-4" onclick="selectTime('friday', '21:10 - 22:00')">選擇</button></td>
                         </tr>
                     </table>             
                   </div>
@@ -534,7 +534,6 @@ document.getElementById('saveChangesButton').addEventListener('click', function 
     var modal = bootstrap.Modal.getInstance(courseModal);
     modal.hide();
 });
-
   </script>
 </body>
 
