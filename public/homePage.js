@@ -70,6 +70,7 @@ async function pageInfoHandler() {
             dataStr += week[Math.floor(timetable[j].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
         }
 
+        dataStr += "</p>";
         btn.setAttribute("data-course" , dataStr);
         btn.setAttribute("selectTarget" , cid)
         btn.innerHTML = dataStr;

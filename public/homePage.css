@@ -172,14 +172,14 @@ ul,ol{
   margin-top: 1vh;
 }
 
-.focus-courses .selected-courses {
+.homepage-container .selected-courses {
   display: block;
   overflow-y: auto;
   overflow-x: hidden;
   border-radius: 1vw;
   margin-left: -2.1rem;
-  height: 67%;
-  width: 120%;
+  height: 60%;
+  width: 218%;
   margin-top: -0.5vw;
 }
 
