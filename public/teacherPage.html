@@ -29,11 +29,9 @@
 
         <div class="module-container">
             <!-- 左側個人資訊模塊 -->
-            <div class="module personal-info">
-                <h2>個人資訊</h2>
-                <p>姓名: 李淑芬</p>
-                <p>教師編號: 123456</p>
-                <p>所屬: ○○學系</p>
+            <div class="fade-in module personal-info">
+                <!--js code-->
+                <p>loading</p>
                 <div class="logoutButton">
                     <a id="logout" class="logout">登出</a>
                 </div>
@@ -42,7 +40,7 @@
               </div>
             </div>
             <!-- 中間課程檢索模塊 -->
-            <div class="module course-search">
+            <div class="fade-in module course-search">
                 <h2>課程管理</h2>
                 <form id="searchForm">
                     <div class="search-container">
@@ -93,7 +91,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="module course-search-results">
+                <div class="fade-in module course-search-results">
                     <div class="course-list-scrollbar">
                        <div class="course-item">
                           <p>CS101</p>
@@ -106,7 +104,7 @@
                 </div>
             </div>
             <!-- 右側個人課表模塊 -->
-          <div class="module course-schedule">
+          <div class="fade-in module course-schedule">
             <h2>課表</h2>
             <div class="timetable">  
                 <div class="week-names">  
@@ -483,6 +481,7 @@
   </div>
 </div>
 <script src="teacherEdit.js"></script>
+<script src="teacherPage.js"></script>
 <script src="homePage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

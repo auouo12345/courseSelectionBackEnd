@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session')
 var cors = require('cors');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var studentRegisterRouter = require('./routes/studentRegister');
@@ -21,7 +20,8 @@ var searchRouter = require('./routes/search');
 var getStudentInfo = require('./routes/getStudentInfo');
 var addFocus = require('./routes/addFocus');
 var getFocusList = require('./routes/getFocusList');
-var getTeacherInfo = require('./routes/getTeacherInfo');
+var getTeacherInfo = require('./routes/getTeacherInfo');//by Ian
+var getUserRoleRouter = require('./routes/getUserRole');//by Ian
 
 var app = express();
 
@@ -43,6 +43,12 @@ app.use(cors({
   origin: 'http://localhost:4000',
   credentials: true
 }));
+//測試
+app.use((req, res, next) => {
+  console.log(`收到請求: ${req.method} ${req.url}`);
+  next();
+});
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -59,8 +65,8 @@ app.use('/api/search' , searchRouter);
 app.use('/api/getStudentInfo',getStudentInfo);
 app.use('/api/addFocus', addFocus);
 app.use('/api/getFocusList', getFocusList);
-app.use('/api/getTeacherInfo', getTeacherInfo);
-
+app.use('/api/getTeacherInfo', getTeacherInfo);//by Ian
+app.use('/api/getUserRole', getUserRoleRouter);//by Ian
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

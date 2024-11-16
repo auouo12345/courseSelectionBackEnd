@@ -57,29 +57,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // �B�z�n�J
     loginForm.addEventListener("submit", async e => {
+      e.preventDefault();
 
-        e.preventDefault();
-        let form = loginForm;
+      let form = loginForm;
 
-        let res = await fetch("http://localhost:4000/api/studentLogin", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                "sid": form.elements.account.value,
-                "password": form.elements.password.value
-            }),
-            credentials: 'include'
-        })
+      if (selectedAccount === 'Teacher') {
+          // 教職員登入處理
+          let res = await fetch("http://localhost:4000/api/teacherLogin", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json"
+              },
+              body: JSON.stringify({
+                  "tid": form.elements.account.value,
+                  "password": form.elements.password.value
+              }),
+              credentials: 'include'
+          });
 
-        let result = await res.json();
-        alert(result.msg);
+          let result = await res.json();
+          alert(result.msg);
 
-        if (result.login) {
+          if (result.login) {
+              window.location.href = 'teacherPage.html';
+          }
+      } else {
+          // 學生登入處理
+          let res = await fetch("http://localhost:4000/api/studentLogin", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json"
+              },
+              body: JSON.stringify({
+                  "sid": form.elements.account.value,
+                  "password": form.elements.password.value
+              }),
+              credentials: 'include'
+          });
 
-            window.location.href = 'homePage.html';
-        }
-    });
+          let result = await res.json();
+          alert(result.msg);
+
+          if (result.login) {
+              window.location.href = 'homePage.html';
+          }
+      }
+  });
 });

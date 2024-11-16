@@ -189,3 +189,91 @@ document.getElementById("logout").addEventListener('click' , async e => {
     alert(result.msg);
     window.location.href = 'index.html';
 })
+//loading animation #Ian
+document.addEventListener("DOMContentLoaded", () => {
+  const fadeInElements = document.querySelectorAll(".fade-in");
+
+  // 逐一添加淡入效果
+  fadeInElements.forEach((element, index) => {
+      setTimeout(() => {
+          element.classList.add("show");
+      }, index * 300); // 每個部件延遲300ms
+  });
+});
+//info update #Ian
+document.addEventListener("DOMContentLoaded", function () {
+  // 判斷用戶角色
+  fetch('/api/getUserRole', {
+      method: 'GET',
+      credentials: 'include', // 附帶 session cookie
+  })
+      .then((response) => {
+          if (!response.ok) {
+              throw new Error('無法獲取用戶角色');
+          }
+          return response.json();
+      })
+      .then((userData) => {
+          if (userData.role === 'teacher') {
+              // 調用教師 API
+              loadPersonalInfo('/api/getTeacherInfo', '教師編號', '所屬部門');
+          } else if (userData.role === 'student') {
+              // 調用學生 API
+              loadPersonalInfo('/api/getStudentInfo', '學號', '科系');
+          } else {
+              alert('未知角色，請聯繫管理員');
+          }
+      })
+      .catch((err) => {
+          console.error('獲取用戶角色失敗:', err);
+      });
+
+  // 加載個人資訊函數
+  function loadPersonalInfo(apiUrl, idLabel, deptLabel) {
+      fetch(apiUrl, {
+          method: 'GET',
+          credentials: 'include',
+      })
+          .then((response) => {
+              if (!response.ok) {
+                  throw new Error('無法獲取個人資訊');
+              }
+              return response.json();
+          })
+          .then((data) => {
+              if (data.msg) {
+                  alert(data.msg); // 提示錯誤信息
+                  return;
+              }
+
+              // 更新 Personal Info 區塊
+              document.querySelector('.personal-info').innerHTML = `
+                  <h2>個人資訊</h2>
+                  <p>姓名: ${data.name}</p>
+                  <p>${idLabel}: ${data.id}</p>
+                  <p>${deptLabel}: ${data.dept}</p>
+                  <div class="logoutButton">
+                      <a id="logout" class="logout">登出</a>
+                  </div>
+              `;
+
+              // 綁定登出按鈕邏輯
+              bindLogout();
+          })
+          .catch((err) => {
+              console.error('無法獲取個人資訊:', err);
+          });
+  }
+
+  // 登出按鈕邏輯
+  function bindLogout() {
+      document.querySelector('#logout').addEventListener('click', function () {
+          fetch('/api/logout', { method: 'POST', credentials: 'include' })
+              .then(() => {
+                  window.location.href = 'index.html'; // 返回登入頁
+              })
+              .catch((err) => console.error('登出失敗:', err));
+      });
+  }
+});
+

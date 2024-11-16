@@ -26,6 +26,7 @@ router.post('/' , (req , res) =>{
             if(bcrypt.compareSync(password , teacherInfo.password)) {
 
                 req.session.tid = tid;
+                req.session.role = 'teacher'; // 保存角色
                 return res.json({msg: "登入成功", login: true});
 
             } else {
