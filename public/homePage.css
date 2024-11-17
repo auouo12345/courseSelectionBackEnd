@@ -178,9 +178,9 @@ ul,ol{
   overflow-x: hidden;
   border-radius: 1vw;
   margin-left: -2.1rem;
-  height: 60%;
+  height: 20rem;
   width: 218%;
-  margin-top: -0.5vw;
+  margin-top: -2vh;
 }
 
 .selected-courses:hover::-webkit-scrollbar {
@@ -264,14 +264,6 @@ ul,ol{
   border-radius: 1.2vw / 1.4vw;
 }
 
-.homepage-container .course-schedule{
-  width: 28.858%;
-  border-top-width: 0.6vw;
-  border-right-width: 0.7vw;
-  border-bottom-width: 0.6vw;
-  border-left-width: 0.6vw;
-}
-
 .homepage-container h2 {
   color: #3496ff;
   margin-bottom: 0.75vw;
@@ -281,6 +273,7 @@ ul,ol{
 .course-search .search-container{
   display: flex;
   width: 115%;
+  margin-top: -0.6rem;
 }
 
 .condition{
@@ -349,7 +342,7 @@ ul,ol{
 .homepage-container .course-search-results{
   width: 38vw;
   background-color: #f9f9f9;
-  padding-top: 0;
+  height: 66vh;
   border: 1px solid #eef3f7;
 }
 
@@ -458,22 +451,31 @@ ul,ol{
   margin-top: 10px;
 }
 
+.homepage-container .course-schedule{
+  width: 28.858%;
+  border-top-width: 0.6vw;
+  border-right-width: 0.7vw;
+  border-bottom-width: 0.6vw;
+  border-left-width: 0.6vw;
+}
+
 .timetable {  
   display: grid;  
   grid-template-areas: ". week"  
                        "time content";  
-  grid-template-columns: 45px auto;  /* 調整列寬比例 */
-  grid-template-rows: 35px auto;  /* 調整行高比例 */
+  grid-template-columns: 40px;  /* 調整列寬比例 */
+  grid-template-rows: 20px ;  /* 調整行高比例 */
   width: 105%;  
   max-width: 800px;  /* 最大寬度，避免太大 */
   max-height: 600px;  /* 最大高度，避免太高 */
   border: 1px solid #ECEFF1;
   padding: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 10px rgba(208, 53, 53, 0.1);
   background-color: #ffffff;
   margin-left: -2%;
-  margin-top: -2%;
+  margin-top: -3%;
   border-radius: 1vw;
+  height: 74.5vh;
 }
 
 .week-names {  
@@ -481,7 +483,10 @@ ul,ol{
   display: grid;  
   grid-template-columns: repeat(5, 1fr);  
   text-transform: uppercase;  
-  font-size: 8px;  
+  font-size: 0.9rem;
+  align-content: center; 
+  justify-content: center; 
+  margin-bottom: 1ch;
 }  
 
 .week-names > div {  
@@ -497,7 +502,7 @@ ul,ol{
 .time-interval {  
   grid-area: time;  
   display: grid;  
-  grid-template-rows: repeat(12, 1fr);   
+  grid-template-rows: repeat(15, 5vh);   
   font-size: 10px;  
   width: 100%;
 }  
@@ -515,7 +520,7 @@ ul,ol{
 .content {  
   grid-area: content;  
   display: grid;  
-  grid-template-rows: repeat(12, 1fr);   
+  grid-template-rows: repeat(15,5vh);   
   grid-template-columns: repeat(5, 1fr);  
 }  
 
@@ -524,8 +529,10 @@ ul,ol{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;  
-  padding: 5px;  
+  font-size: 0.8rem;  
+  padding: 3px;
+  font-weight: 600; 
+  overflow: hidden;
 }  
 
 .weekend {  
