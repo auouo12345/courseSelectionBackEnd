@@ -38,6 +38,7 @@
 .site-menu ul {
   display: flex;
   padding-right: 1.8vw;
+  margin-top: 2vh;
 }
 
 .site-menu li a {
@@ -329,6 +330,7 @@ ul,ol{
   cursor: pointer;
   text-align: center;
   height: 2vw;
+  margin-top: -1vh;
 }
 
 .homepage-container .logoutButton:hover {
