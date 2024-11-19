@@ -4,8 +4,10 @@ async function pageInfoHandler() {
     //更新右側課表
     for(let i = 0 ; i < 70 ; i++) {
 
-        document.getElementById(i).innerText = '';
-        document.getElementById(i).style.backgroundColor = 'white';
+        let oldDiv = document.getElementById(String(i))
+        let newDiv = document.createElement('div');
+        newDiv.setAttribute('id' , String(i));
+        oldDiv.parentNode.replaceChild(newDiv, oldDiv);
     }
 
     let res = await fetch("http://localhost:4000/api/studentTimetable" , {
@@ -17,9 +19,31 @@ async function pageInfoHandler() {
 
     for(let i = 0 ; i < result.length ; i++) {
 
+        let cid = result[i].cid;
         let target = document.getElementById(result[i].timeid);
         target.innerText = result[i].cname;
         target.style.backgroundColor = "green";
+        target.addEventListener('click' , async e => {
+
+            if(confirm('是否退選')) {
+
+                let res = await fetch("http://localhost:4000/api/courseDrop", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "cid": cid
+                    }),
+                    credentials: 'include'
+                });
+
+                let result = await res.json();
+                alert(result.msg);
+                pageInfoHandler();
+            }
+        })
     }
 
     //更新左下方關注列表
@@ -282,6 +306,10 @@ document.getElementById('cancel').addEventListener('click' , async e=> {
     alert(result.msg);
     pageInfoHandler();
 });
+
+async function courseDrop(cid) {
+
+}
 
 //info update #Ian
 // document.addEventListener("DOMContentLoaded", function () {
