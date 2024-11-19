@@ -94,6 +94,7 @@ router.post('/' , async (req, res) => {
         await queryAsync("DELETE FROM course_selection WHERE sid = ? AND cid = ?" , [sid , cid]);
         await queryAsync("DELETE FROM student_timetable WHERE sid = ? AND cid = ?" , [sid , cid]);
         await queryAsync("UPDATE students SET credit = ? WHERE sid = ?" , [studentInfo.credit - courseInfo.credit , sid]);
+        await queryAsync("UPDATE course SET current_quantity = current_quantity - 1 WHERE cid = ?" , [cid]);
 
     } catch (err) {
 

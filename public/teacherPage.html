@@ -232,7 +232,7 @@
               <form id="editForm">
                   <div class="mb-3">
                       <label for="courseNameInput" class="form-label">課程名稱</label>
-                      <input type="text" class="form-control" id="courseNameInput">
+                      <input name = 'courseName'  type="text" class="form-control" id="courseNameInput">
                   </div>
                   <div class="mb-3">
                       <label for="courseTime" class="form-label">上課時間</label>
@@ -361,12 +361,12 @@
                   </div>
                   <div class="mb-3">
                       <label for="courseLocationInput" class="form-label">上課地點</label>
-                      <input type="text" class="form-control" id="courseLocationInput">
+                      <input name = 'location' type="text" class="form-control" id="courseLocationInput">
                   </div>
               </form>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="saveChangesButton">儲存</button>
+              <button type="submit" class="btn btn-primary" id="saveChangesButton">儲存</button>
           </div>
       </div>
   </div>
@@ -499,6 +499,8 @@
     // 使用 JavaScript 來動態更新 Modal 的內容
     // 使用 JavaScript 來動態更新 Modal 的內容
 var courseModal = document.getElementById('courseModal');
+var selectTarget = -1;
+
 courseModal.addEventListener('show.bs.modal', function (event) {
     // 取得觸發模態框顯示的按鈕
     var button = event.relatedTarget;
@@ -509,6 +511,7 @@ courseModal.addEventListener('show.bs.modal', function (event) {
     var courseName = button.getAttribute('data-course');
     var courseTime = button.getAttribute('data-time');
     var courseLocation = button.getAttribute('data-location');
+    selectTarget = button.getAttribute('selectTarget')
 
     // 將資料填入模態框中的輸入框
     document.getElementById('courseNameInput').value = courseName;
@@ -526,25 +529,25 @@ ruleModal.addEventListener('show.bs.modal', function (event) {
     modalElement.classList.add('slide-in');  // 加上自訂的滑動動畫
 });
 
-document.getElementById('saveChangesButton').addEventListener('click', function () {
-    // 獲取輸入框中的新資訊
-    //const newCourseName = document.getElementById('courseNameInput').value;
-    //const newCourseTime = document.getElementById('courseTimeInput').value;
-    //const newCourseLocation = document.getElementById('courseLocationInput').value;
-
-    // 獲取被編輯的課程項目 ID
-    //const courseId = this.getAttribute('data-course-id');
-    //const courseItem = document.getElementById(courseId);
-
-    // 更新課程資訊
-    // courseItem.querySelector('.course-title strong').innerText = newCourseName;
-    // courseItem.querySelector('.course-time').innerText = newCourseTime;
-    // courseItem.querySelector('.course-location').innerText = newCourseLocation;
-
-    // 關閉模態框
-    var modal = bootstrap.Modal.getInstance(courseModal);
-    modal.hide();
-});
+// document.getElementById('saveChangesButton').addEventListener('click', function () {
+//     // 獲取輸入框中的新資訊
+//     //const newCourseName = document.getElementById('courseNameInput').value;
+//     //const newCourseTime = document.getElementById('courseTimeInput').value;
+//     //const newCourseLocation = document.getElementById('courseLocationInput').value;
+//
+//     // 獲取被編輯的課程項目 ID
+//     //const courseId = this.getAttribute('data-course-id');
+//     //const courseItem = document.getElementById(courseId);
+//
+//     // 更新課程資訊
+//     // courseItem.querySelector('.course-title strong').innerText = newCourseName;
+//     // courseItem.querySelector('.course-time').innerText = newCourseTime;
+//     // courseItem.querySelector('.course-location').innerText = newCourseLocation;
+//
+//     // 關閉模態框
+//     // var modal = bootstrap.Modal.getInstance(courseModal);
+//     // modal.hide();
+// });
   </script>
 </body>
 

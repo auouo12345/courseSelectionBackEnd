@@ -76,7 +76,13 @@ async function teacherPageHandler() {
     for(let i = 0 ; i < result.length ; i++) {
 
         let target = document.getElementById(result[i].timeid);
-        target.innerText = result[i].cname;
+
+        if(target.innerText !== '') {
+
+            target.innerText += '\n'
+        }
+
+        target.innerText += result[i].cname;
         target.style.backgroundColor = "green";
     }
 
@@ -96,7 +102,7 @@ async function teacherPageHandler() {
         courseItem.className = 'course-item';
         courseItem.innerHTML = `<p>${result[i].cid}</p>
                               <p><strong>${result[i].name}</strong></p>
-                              <button class="edit-button" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="${result[i].name}" selectTarger = "${result[i].cid}">編輯</button>`;
+                              <button class="edit-button" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="${result[i].name}" selectTarget = "${result[i].cid}">編輯</button>`;
 
         courseList.appendChild(courseItem);
     }
@@ -109,7 +115,7 @@ function selectTime(button , timeid) {
 
     // 如果已選擇，再次點擊則取消選擇
     if (selectedTimes.includes(timeid)) {
-        selectedTimes = selectedTimes.filter(slot => slot !== timeSlot); // 移除已選擇的時段
+        selectedTimes = selectedTimes.filter(slot => slot !== timeid); // 移除已選擇的時段
         button.classList.remove("selected");
         button.classList.add("unselected");
     } else {
@@ -122,9 +128,33 @@ function selectTime(button , timeid) {
     console.log("已選時段:", selectedTimes); // 用於除錯
 }
 
-document.getElementById('editForm').addEventListener('submit' , async e => {
+document.getElementById('saveChangesButton').addEventListener('click' , async e => {
 
     e.preventDefault();
+    let form = document.getElementById('editForm');
+    let body = {
+        'cid': selectTarget,
+        'name': document.getElementById('courseNameInput').value,
+        'timetable': selectedTimes,
+        'classRoom': document.getElementById('courseLocationInput').value
+    }
+
+    let res = await fetch("http://localhost:4000/api/updateCourseInfo", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(body),
+        credentials: 'include'
+    })
+
+    let result = await res.json();
+
+    await teacherPageHandler();
+    var modal = bootstrap.Modal.getInstance(courseModal);
+    modal.hide();
+    alert(result.msg);
 })
 
 teacherPageHandler();

@@ -158,17 +158,29 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
 
         let cid = result[i].cid
         let name = result[i].name;
+        let currentNum = result[i].current_quantity;
+        let maxNum = result[i].max_quantity;
+        let classRoom = result[i].location;
 
         let courseItem = document.createElement("div");
         courseItem.className = "course-item";
 
-        let cidP = document.createElement("p");
-        cidP.innerText = cid;
-        courseItem.appendChild(cidP);
+        courseItem.innerHTML = `
+            <p>${cid}</p>   
+            <p><strong>${name}</strong></p>
+            <p>${classRoom}</p>
+            <p>${currentNum}/${maxNum}</p>
+        `
 
-        let nameP = document.createElement("p");
-        nameP.innerHTML = "<strong>" + name + "</strong>";
-        courseItem.appendChild(nameP);
+        // let cidP = document.createElement("p");
+        // cidP.innerText = cid;
+        // courseItem.appendChild(cidP);
+        //
+        // let nameP = document.createElement("p");
+        // nameP.innerHTML = "<strong>" + name + "</strong>";
+        // courseItem.appendChild(nameP);
+        //
+        // let classRoomP = document.createElement("p");
 
         let res = await fetch("http://localhost:4000/api/courseTimetable", {
             method: "POST",
