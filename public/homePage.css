@@ -10,15 +10,45 @@
 
 .fade-in {
   opacity: 0;
-  transform: translateY(20px); /* 初始位置稍微往下 */
-  transition: opacity 1s ease, transform 1s ease; /* 添加過渡效果 */
+  transform: translateY(-100px) scale(1.2); 
+  animation: sky-fall 1.5s cubic-bezier(0.25, 1, 0.5, 1), fade-in-opacity 1.5s ease;
 }
 
 /* 淡入狀態 */
 .fade-in.show {
-  opacity: 1;
-  transform: translateY(0); /* 回到原位置 */
+  animation-fill-mode: forwards;
 }
+
+/* 天空下墜效果 */
+@keyframes sky-fall {
+  0% {
+    transform: translateY(-150px) scale(1.2);
+  }
+  50% {
+    transform: translateY(20px) scale(1); 
+  }
+  65% {
+    transform: translateY(-5px) scale(1.05); 
+  }
+  80% {
+    transform: translateY(5px) scale(0.98);
+  }
+  100% {
+    transform: translateY(0) scale(1); 
+  }
+}
+
+/* 淡入效果 */
+@keyframes fade-in-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 
 .background{
   min-height: 100vh ;
@@ -50,6 +80,7 @@
 .site-menu ul {
   display: flex;
   padding-right: 1.8vw;
+  padding-top: 2vh;
 }
 
 .site-menu li a{
