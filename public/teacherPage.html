@@ -42,170 +42,183 @@
             <!-- 中間課程檢索模塊 -->
             <div class="fade-in module course-search">
                 <h2>課程管理</h2>
-                <form id="teacherSearchForm">
-                    <div class="search-container">
-                        <input name="pattern" type="text" placeholder="搜尋課程名稱或代碼" class="search-input">
-                        <button type="submmit" class="search-button">搜尋</button>
-                    </div>
-                    <div class="condition">
-                        <div class="checkbox-wrapper-42">
-                            <input name="Monday" id="Monday" type="checkbox"/>
-                            <label class="cbx" for="Monday"></label>
-                            <label class="lbl" for="Monday">星期一</label>
-                        </div>
+<!--                <form id="teacherSearchForm">-->
+<!--                    <div class="search-container">-->
+<!--                        <input name="pattern" type="text" placeholder="搜尋課程名稱或代碼" class="search-input">-->
+<!--                        <button type="submmit" class="search-button">搜尋</button>-->
+<!--                    </div>-->
+<!--                    <div class="condition">-->
+<!--                        <div class="checkbox-wrapper-42">-->
+<!--                            <input name="Monday" id="Monday" type="checkbox"/>-->
+<!--                            <label class="cbx" for="Monday"></label>-->
+<!--                            <label class="lbl" for="Monday">星期一</label>-->
+<!--                        </div>-->
 
-                        <div class="checkbox-wrapper-42">
-                            <input name="Tuesday" id="Tuesday" type="checkbox"/>
-                            <label class="cbx" for="Tuesday"></label>
-                            <label class="lbl" for="Tuesday">星期二</label>
-                        </div>
+<!--                        <div class="checkbox-wrapper-42">-->
+<!--                            <input name="Tuesday" id="Tuesday" type="checkbox"/>-->
+<!--                            <label class="cbx" for="Tuesday"></label>-->
+<!--                            <label class="lbl" for="Tuesday">星期二</label>-->
+<!--                        </div>-->
 
-                        <div class="checkbox-wrapper-42">
-                            <input name="wednesday" id="wednesday" type="checkbox"/>
-                            <label class="cbx" for="wednesday"></label>
-                            <label class="lbl" for="wednesday">星期三</label>
-                        </div>
+<!--                        <div class="checkbox-wrapper-42">-->
+<!--                            <input name="wednesday" id="wednesday" type="checkbox"/>-->
+<!--                            <label class="cbx" for="wednesday"></label>-->
+<!--                            <label class="lbl" for="wednesday">星期三</label>-->
+<!--                        </div>-->
 
-                        <div class="checkbox-wrapper-42">
-                            <input name="thursday" id="thursday" type="checkbox"/>
-                            <label class="cbx" for="thursday"></label>
-                            <label class="lbl" for="thursday">星期四</label>
-                        </div>
+<!--                        <div class="checkbox-wrapper-42">-->
+<!--                            <input name="thursday" id="thursday" type="checkbox"/>-->
+<!--                            <label class="cbx" for="thursday"></label>-->
+<!--                            <label class="lbl" for="thursday">星期四</label>-->
+<!--                        </div>-->
 
-                        <div class="checkbox-wrapper-42">
-                            <input name="friday" id="friday" type="checkbox"/>
-                            <label class="cbx" for="friday"></label>
-                            <label class="lbl" for="friday">星期五</label>
-                        </div>
+<!--                        <div class="checkbox-wrapper-42">-->
+<!--                            <input name="friday" id="friday" type="checkbox"/>-->
+<!--                            <label class="cbx" for="friday"></label>-->
+<!--                            <label class="lbl" for="friday">星期五</label>-->
+<!--                        </div>-->
 
-                        <div class="checkbox-wrapper-42">
-                            <input name="liberalStudies" id="liberalStudies" type="checkbox"/>
-                            <label class="cbx" for="liberalStudies"></label>
-                            <label class="lbl" for="liberalStudies">通識</label>
-                        </div>
+<!--                        <div class="checkbox-wrapper-42">-->
+<!--                            <input name="liberalStudies" id="liberalStudies" type="checkbox"/>-->
+<!--                            <label class="cbx" for="liberalStudies"></label>-->
+<!--                            <label class="lbl" for="liberalStudies">通識</label>-->
+<!--                        </div>-->
 
-                        <div class="checkbox-wrapper-42">
-                            <input name="electiveSubject" id="electiveSubject" type="checkbox"/>
-                            <label class="cbx" for="electiveSubject"></label>
-                            <label class="lbl" for="electiveSubject">選修</label>
-                        </div>
-                    </div>
-                </form>
+<!--                        <div class="checkbox-wrapper-42">-->
+<!--                            <input name="electiveSubject" id="electiveSubject" type="checkbox"/>-->
+<!--                            <label class="cbx" for="electiveSubject"></label>-->
+<!--                            <label class="lbl" for="electiveSubject">選修</label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
                 <div class="fade-in module course-search-results">
                     <div class="course-list-scrollbar">
                        <div class="course-item">
-                          <p>CS101</p>
-                          <p><strong>資訊工程概論</strong></p>
-                          <p>星期一 09:00 - 12:00</p>
-                          <p>資訊大樓 101 教室</p>
-                          <button class="edit-button" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="資訊工程概論 (星期一 09:00 - 12:00)">編輯</button>
+<!--                          <p>CS101</p>-->
+<!--                          <p><strong>資訊工程概論</strong></p>-->
+<!--                          <p>星期一 09:00 - 12:00</p>-->
+<!--                          <p>資訊大樓 101 教室</p>-->
+<!--                          <button class="edit-button" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="資訊工程概論 (星期一 09:00 - 12:00)">編輯</button>-->
                        </div>
                     </div>
                 </div>
             </div>
             <!-- 右側個人課表模塊 -->
-          <div class="fade-in module course-schedule">
-            <h2>課表</h2>
-            <div class="timetable">  
-                <div class="week-names">  
-                    <div>Mon</div>  
-                    <div>Tue</div>  
-                    <div>Wed</div>  
-                    <div>Thu</div>  
-                    <div>Fri</div>  
-                </div>  
-                <div class="time-interval">  
-                  <div>08:10 - 09:00</div>
-                  <div>09:10 - 10:00</div>  
-                  <div>10:10 - 11:00</div>
-                  <div>11:10 - 12:00</div>  
-                  <div>12:10 - 13:00</div>  
-                  <div>13:10 - 14:00</div>  
-                  <div>14:10 - 15:00</div>  
-                  <div>15:10 - 16:00</div>
-                  <div>16:10 - 17:00</div>
-                  <div>17:10 - 18:00</div>
-                  <div>18:10 - 19:00</div>
-                  <div>19:10 - 20:00</div>
-                  <div>20:10 - 21:00</div>
-                  <div>21:10 - 22:00</div>
-              </div>  
-              <div class="content">  
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+            <div class="fade-in module course-schedule">
+                <h2>課表與已選課程</h2>
+                <div class="timetable">
+                    <div class="week-names">
+                        <div>一</div>
+                        <div>二</div>
+                        <div>三</div>
+                        <div>四</div>
+                        <div>五</div>
+                    </div>
+                    <div class="time-interval">
+                        <div>第1節</div>
+                        <div>第2節</div>
+                        <div>第3節</div>
+                        <div>第4節</div>
+                        <div>第5節</div>
+                        <div>第6節</div>
+                        <div>第7節</div>
+                        <div>第8節</div>
+                        <div>第9節</div>
+                        <div>第10節</div>
+                        <div>第11節</div>
+                        <div>第12節</div>
+                        <div>第13節</div>
+                        <div>第14節</div>
+                    </div>
+                    <div class="content">
+                        <div id="0"></div>
+                        <div id="14"></div>
+                        <div id="28"></div>
+                        <div id="42"></div>
+                        <div id="56"></div>
 
-                  <div></div>
-                  <div class="accent-orange-gradient">演算法</div>
-                  <div></div>
-                  <div class="accent-green-gradient">網路程式設計</div>
-                  <div></div>
-
-
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
-                  <div></div>
+                        <div id="1"></div>
+                        <div id="15"></div>
+                        <div id="29"></div>
+                        <div id="43"></div>
+                        <div id="57"></div>
 
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
+                        <div id="2"></div>
+                        <div id="16"></div>
+                        <div id="30"></div>
+                        <div id="44"></div>
+                        <div id="58"></div>
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
+                        <div id="3"></div>
+                        <div id="17"></div>
+                        <div id="31"></div>
+                        <div id="45"></div>
+                        <div id="59"></div>
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
+                        <div id="4"></div>
+                        <div id="18"></div>
+                        <div id="32"></div>
+                        <div id="46"></div>
+                        <div id="60"></div>
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
+                        <div id="5"></div>
+                        <div id="19"></div>
+                        <div id="33"></div>
+                        <div id="47"></div>
+                        <div id="61"></div>
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
+                        <div id="6"></div>
+                        <div id="20"></div>
+                        <div id="34"></div>
+                        <div id="48"></div>
+                        <div id="62"></div>
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
+                        <div id="7"></div>
+                        <div id="21"></div>
+                        <div id="35"></div>
+                        <div id="49"></div>
+                        <div id="63"></div>
 
-                  <div></div>
-                  <div class="accent-cyan-gradient">操作系統</div>
-                  <div class="accent-purple-gradient">人工智慧概論</div>
-                  <div class="accent-pink-gradient">資料庫系統</div>
-                  <div></div>
+                        <div id="8"></div>
+                        <div id="22"></div>
+                        <div id="36" ></div>
+                        <div id="50"></div>
+                        <div id="64"></div>
 
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-              </div>  
-          </div>
+                        <div id="9"></div>
+                        <div id="23"></div>
+                        <div id="37"></div>
+                        <div id="51"></div>
+                        <div id="65"></div>
+
+                        <div id="10"></div>
+                        <div id="24"></div>
+                        <div id="38"></div>
+                        <div id="52"></div>
+                        <div id="66"></div>
+
+                        <div id="11"></div>
+                        <div id="25"></div>
+                        <div id="39"></div>
+                        <div id="53"></div>
+                        <div id="67"></div>
+
+                        <div id="12"></div>
+                        <div id="26"></div>
+                        <div id="40"></div>
+                        <div id="54"></div>
+                        <div id="68"></div>
+
+                        <div id="13"></div>
+                        <div id="27"></div>
+                        <div id="41"></div>
+                        <div id="55"></div>
+                        <div id="69"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

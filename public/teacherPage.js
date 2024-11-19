@@ -43,8 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
         ;
 
         document.querySelector('#logout').addEventListener('click', function () {
-            fetch('/api/logout', { method: 'POST', credentials: 'include' })
-                .then(() => {
+            fetch('/api/logout', { method: 'GET', credentials: 'include' })
+                .then(async (res) => {
+                    let result = await res.json();
+                    alert(result.msg);
                     window.location.href = 'index.html';
                 })
                 .catch((err) => console.error('登出失敗:', err));
@@ -55,3 +57,49 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('獲取教師資訊失敗，請稍後再試');
     });
 })
+
+async function teacherPageHandler() {
+    //更新右側課表
+    for(let i = 0 ; i < 70 ; i++) {
+
+        document.getElementById(i).innerText = '';
+        document.getElementById(i).style.backgroundColor = 'white';
+    }
+
+    let res = await fetch("/api/teacherTimetable" , {
+        method: "GET",
+        credentials: 'include'
+    });
+
+    let result = await res.json();
+
+    for(let i = 0 ; i < result.length ; i++) {
+
+        let target = document.getElementById(result[i].timeid);
+        target.innerText = result[i].cname;
+        target.style.backgroundColor = "green";
+    }
+
+
+    res = await fetch('/api/getTeacherCourses' , {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    result = await res.json();
+    let courseList = document.getElementsByClassName("course-list-scrollbar")[0];
+    courseList.replaceChildren();
+
+    for(let i = 0 ; i < result.length ; i++) {
+
+        let courseItem = document.createElement('div');
+        courseItem.className = 'course-item';
+        courseItem.innerHTML = `<p>${result[i].cid}</p>
+                              <p><strong>${result[i].name}</strong></p>
+                              <button class="edit-button" data-bs-toggle="modal" data-bs-target="#courseModal" data-course="${result[i].name}" selectTarger = "${result[i].cid}">編輯</button>`;
+
+        courseList.appendChild(courseItem);
+    }
+}
+
+teacherPageHandler();

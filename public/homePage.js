@@ -128,7 +128,7 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
     })
 
     let result = await res.json();
-    resultPage.innerHTML = "";
+    resultPage.replaceChildren();
 
     for(let i = 0 ; i < result.length ; i++) {
 

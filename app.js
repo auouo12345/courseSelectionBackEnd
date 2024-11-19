@@ -15,7 +15,8 @@ var logoutRouter = require('./routes/logout');
 var courseAddRouter = require('./routes/courseAdd');
 var courseDropRouter = require('./routes/courseDrop');
 var studentTimetableRouter = require('./routes/studentTimetable');
-var courseTimetableRouter = require('./routes/courseTimetable')
+var courseTimetableRouter = require('./routes/courseTimetable');
+var teacherTimetableRouter = require('./routes/teacherTimetable');
 var searchRouter = require('./routes/search');
 var getStudentInfo = require('./routes/getStudentInfo');
 var addFocus = require('./routes/addFocus');
@@ -23,6 +24,7 @@ var dropFocus = require('./routes/dropFocus')
 var getFocusList = require('./routes/getFocusList');
 var getTeacherInfo = require('./routes/getTeacherInfo');//by Ian
 var getUserRoleRouter = require('./routes/getUserRole');//by Ian
+var getTeacherCoursesRouter = require('./routes/getTeacherCourses');
 
 var app = express();
 
@@ -62,6 +64,7 @@ app.use('/api/courseAdd' , courseAddRouter);
 app.use('/api/courseDrop' , courseDropRouter);
 app.use('/api/studentTimetable' , studentTimetableRouter);
 app.use('/api/courseTimetable' , courseTimetableRouter);
+app.use('/api/teacherTimetable' , teacherTimetableRouter);
 app.use('/api/search' , searchRouter);
 app.use('/api/getStudentInfo',getStudentInfo);
 app.use('/api/addFocus', addFocus);
@@ -69,6 +72,7 @@ app.use('/api/dropFocus', dropFocus);
 app.use('/api/getFocusList', getFocusList);
 app.use('/api/getTeacherInfo', getTeacherInfo);//by Ian
 app.use('/api/getUserRole', getUserRoleRouter);//by Ian
+app.use('/api/getTeacherCourses' , getTeacherCoursesRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
