@@ -22,7 +22,7 @@ async function pageInfoHandler() {
         let cid = result[i].cid;
         let target = document.getElementById(result[i].timeid);
         target.innerText = result[i].cname;
-        target.style.backgroundColor = "green";
+        target.style.backgroundColor = "#68be8d";
         target.addEventListener('click' , async e => {
 
             if(confirm('是否退選')) {
@@ -87,7 +87,7 @@ async function pageInfoHandler() {
         for(let j = 0 ; j < timetable.length ; j++) {
 
             let target = document.getElementById(timetable[j].timeid);
-            target.style.backgroundColor = target.innerText === "" ? "yellow" : "red";
+            target.style.backgroundColor = target.innerText === "" ? "#f6efa6" : "#c0696d";
             target.innerText += '\n' + cname;
 
             dataStr += "<br>";
