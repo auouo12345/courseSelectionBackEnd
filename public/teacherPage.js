@@ -104,22 +104,27 @@ async function teacherPageHandler() {
 
 let selectedTimes = []; // 用來存儲已選擇的課程時段
 
-function selectTime(button, day, time) {
-    const timeSlot = `${day} ${time}`; // 唯一標識時段
+function selectTime(button , timeid) {
+    //const timeSlot = `${day} ${time}`; // 唯一標識時段
 
     // 如果已選擇，再次點擊則取消選擇
-    if (selectedTimes.includes(timeSlot)) {
+    if (selectedTimes.includes(timeid)) {
         selectedTimes = selectedTimes.filter(slot => slot !== timeSlot); // 移除已選擇的時段
         button.classList.remove("selected");
         button.classList.add("unselected");
     } else {
         // 如果尚未選擇，則新增到已選列表
-        selectedTimes.push(timeSlot);
+        selectedTimes.push(timeid);
         button.classList.add("selected");
         button.classList.remove("unselected");
     }
 
     console.log("已選時段:", selectedTimes); // 用於除錯
 }
+
+document.getElementById('editForm').addEventListener('submit' , async e => {
+
+    e.preventDefault();
+})
 
 teacherPageHandler();
