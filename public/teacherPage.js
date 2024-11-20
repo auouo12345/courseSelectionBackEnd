@@ -76,7 +76,6 @@ async function teacherPageHandler() {
     for(let i = 0 ; i < result.length ; i++) {
 
         let target = document.getElementById(result[i].timeid);
-<<<<<<< Updated upstream
 
         if(target.innerText !== '') {
 
@@ -84,11 +83,7 @@ async function teacherPageHandler() {
         }
 
         target.innerText += result[i].cname;
-        target.style.backgroundColor = "green";
-=======
-        target.innerText = result[i].cname;
-        target.style.backgroundColor = "#b4d9ef";
->>>>>>> Stashed changes
+        target.style.backgroundColor = "#98d98e";
     }
 
 

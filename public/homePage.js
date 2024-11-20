@@ -82,19 +82,18 @@ async function pageInfoHandler() {
 
         let week = ["星期一" , "星期二" , "星期三" , "星期四" , "星期五"]
         let timetable = await res.json();
-        let dataStr = cname;
+        let dataStr = `${cname}`;
 
         for(let j = 0 ; j < timetable.length ; j++) {
 
             let target = document.getElementById(timetable[j].timeid);
             target.style.backgroundColor = target.innerText === "" ? "#f6efa6" : "#c0696d";
             target.innerText += '\n' + cname;
-
             dataStr += "<br>";
             dataStr += week[Math.floor(timetable[j].timeid / 14)] + ` 第${timetable[j].timeid % 14 + 1}節`;
         }
 
-        dataStr += "</p>";
+        //dataStr += "</p>";
         btn.setAttribute("data-course" , dataStr);
         btn.setAttribute("selectTarget" , cid)
         btn.innerHTML = dataStr;
@@ -168,8 +167,6 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
         courseItem.innerHTML = `
             <p>${cid}</p>   
             <p><strong>${name}</strong></p>
-            <p>${classRoom}</p>
-            <p>${currentNum}/${maxNum}</p>
         `
 
         // let cidP = document.createElement("p");
@@ -210,7 +207,13 @@ document.getElementById('searchForm').addEventListener('submit' , async e => {
 
             courseItem.appendChild(dayP);
         }
+        let locationP = document.createElement("p");
+        locationP.innerText = classRoom;
+        courseItem.appendChild(locationP);
 
+        let quantityP = document.createElement("p");
+        quantityP.innerText = `${currentNum}/${maxNum}`;
+        courseItem.appendChild(quantityP);
         //新增按鈕
         let btn = document.createElement("button");
         btn.className = "add-course-button";

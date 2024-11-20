@@ -10,8 +10,9 @@
 
 .fade-in {
   opacity: 0;
-  transform: translateY(-100px) scale(1.2); 
-  animation: sky-fall 1.5s cubic-bezier(0.25, 1, 0.5, 1), fade-in-opacity 1.5s ease;
+  filter: blur(10px); /* 初始模糊 */
+  transform: scale(0.8); /* 初始縮小 */
+  animation: fog-appear 2s cubic-bezier(0.25, 1, 0.5, 1), fade-in-opacity 2s ease;
 }
 
 /* 淡入狀態 */
@@ -19,35 +20,27 @@
   animation-fill-mode: forwards;
 }
 
-/* 天空下墜效果 */
-@keyframes sky-fall {
+/* 霧裡散出效果（無彈跳） */
+@keyframes fog-appear {
   0% {
-    transform: translateY(-150px) scale(1.2);
-  }
-  50% {
-    transform: translateY(20px) scale(1); 
-  }
-  65% {
-    transform: translateY(-5px) scale(1.05); 
-  }
-  80% {
-    transform: translateY(5px) scale(0.98);
+    transform: scale(0.8); /* 起始縮小 */
+    filter: blur(10px); /* 起始模糊 */
   }
   100% {
-    transform: translateY(0) scale(1); 
+    transform: scale(1); /* 正常大小 */
+    filter: blur(0); /* 完全清晰 */
   }
 }
 
-/* 淡入效果 */
+/* 淡入透明效果 */
 @keyframes fade-in-opacity {
   0% {
-    opacity: 0;
+    opacity: 0; /* 完全透明 */
   }
   100% {
-    opacity: 1;
+    opacity: 1; /* 完全顯現 */
   }
 }
-
 
 
 .background{
@@ -209,8 +202,8 @@ ul,ol{
   overflow-x: hidden;
   border-radius: 1vw;
   margin-left: -2.1rem;
-  height: 70%;
-  width: 218%;
+  height: 42.5vh;
+  width: 16.5vw;
   margin-top: -2vh;
 }
 
@@ -292,7 +285,7 @@ ul,ol{
   width: 49.8%;
   border-top-width: 0.6vw;
   border-bottom-width: 0.6vw;
-  border-radius: 1.2vw / 1.4vw;
+  border-radius: 0.7vw / 1vw;
 }
 
 .homepage-container h2 {
@@ -374,7 +367,7 @@ ul,ol{
 .homepage-container .course-search-results{
   width: 38vw;
   background-color: #f9f9f9;
-  height: 66vh;
+  height: 65.5vh;
   border: 1px solid #eef3f7;
 }
 
@@ -383,15 +376,16 @@ ul,ol{
   display: flex;
   flex-direction: column;
   margin-left: -1vw;
+  margin-top: -2vh;
   gap: 0.3vw;
   overflow-y: auto; 
   max-height: 103%;
-  width: 37.5vw;
+  width: 38vw;
 }
 
 .course-list-scrollbar::-webkit-scrollbar {
   width: 6px;
-  left: 10px;
+  left: 13px;
   opacity: 0;
   transition: opacity 0.25s linear;
 }
